@@ -33,7 +33,7 @@ def random_response_for_hist(user_vector, epsilon):
 
 if __name__ == '__main__':
     # 生成数据
-    users = generate_data(user_number=100000)
+    users = generate_data(user_number=1000000)
 
     # 得到原始数据的直方图
     original_hist = np.sum(users, axis=0)

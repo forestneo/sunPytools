@@ -35,7 +35,7 @@ def perturbation(value, perturbed_value, epsilon):
     :param epsilon: privacy budget
     :return: dp version of perturbation
     """
-    p = np.e ** epsilon / (1 + np.e ** epsilon)
+    p = epsilon2probability(epsilon)
     rnd = np.random.random()
     return value if rnd < p else perturbed_value
 

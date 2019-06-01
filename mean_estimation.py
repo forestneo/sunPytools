@@ -4,29 +4,30 @@
 # @Email   : dr.forestneo@gmail.com
 # @Software: PyCharm
 
-#
 
 import numpy as np
 import basis_differential_privacy as dp
 
 
 def mean_estimation_experiment():
-    data = np.clip(np.random.normal(loc=0.5, scale=0.2, size=[100000]), 0, 1)
-    print(data)
+    # generated data
+    data = np.clip(np.random.normal(loc=0.5, scale=0.2, size=[10000]), 0, 1)
+    print("this is generated data\n", data)
 
     mean = np.average(data)
     print("the mean of original data is: ", mean)
 
-    epsilon = 0.5
+    epsilon = 1
 
-    discredized_data = [dp.discretization(value=value, lower=0, upper=1) for value in data]
-    dp_data = [dp.random_response(value=value, epsilon=epsilon) for value in discredized_data]
+    discretized_data = [dp.discretization(value=value, lower=0, upper=1) for value in data]
+    dp_data = [dp.random_response(value=value, epsilon=epsilon) for value in discretized_data]
 
     cnt_one = np.sum(dp_data)
     est_one = dp.random_response_adjust(sum=cnt_one, N=len(dp_data), epsilon=epsilon)
     est_mean = est_one / len(dp_data)
 
     print("the estimated mean is: ", est_mean)
+
 
 if __name__ == '__main__':
     mean_estimation_experiment()

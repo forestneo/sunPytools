@@ -7,7 +7,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import basis_differential_privacy as sdp
+from basis import basis_differential_privacy as sdp
 
 
 def generate_data(buckets=100, user_number=10000):
@@ -33,7 +33,7 @@ def random_response_for_hist(user_vector, epsilon):
 
 if __name__ == '__main__':
     # 生成数据
-    users = generate_data(user_number=1000000)
+    users = generate_data(user_number=100000)
 
     # 得到原始数据的直方图
     original_hist = np.sum(users, axis=0)

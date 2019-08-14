@@ -27,7 +27,7 @@ def random_response_for_hist(user_vector, epsilon):
     :return: [1,0,0,1,1,...]
     """
     for i in range(len(user_vector)):
-        user_vector[i] = sdp.random_response(user_vector[i], epsilon=epsilon/2)
+        user_vector[i] = sdp.random_response_basic(user_vector[i], epsilon=epsilon / 2)
     return user_vector
 
 

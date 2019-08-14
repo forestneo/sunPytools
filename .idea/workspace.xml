@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sunDP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sunDP.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/basis/basis_differential_privacy.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/basis_differential_privacy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mean/compare_different_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/compare_different_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/histogram_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/histogram_estimation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean_estimation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.compare_different_methods">
+  <component name="RunManager" selected="Python.basis_differential_privacy">
     <configuration name="basis_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -165,8 +164,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.compare_different_methods" />
         <item itemvalue="Python.basis_differential_privacy" />
+        <item itemvalue="Python.compare_different_methods" />
         <item itemvalue="Python.piecewise" />
         <item itemvalue="Python.duchi" />
         <item itemvalue="Python.histogram_estimation" />
@@ -191,7 +190,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

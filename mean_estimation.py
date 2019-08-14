@@ -20,7 +20,7 @@ def mean_estimation_experiment():
     epsilon = 1
 
     discretized_data = [dp.discretization(value=value, lower=0, upper=1) for value in data]
-    dp_data = [dp.random_response(value=value, epsilon=epsilon) for value in discretized_data]
+    dp_data = [dp.random_response_basic(bit=value, epsilon=epsilon) for value in discretized_data]
 
     cnt_one = np.sum(dp_data)
     est_one = dp.random_response_adjust(sum=cnt_one, N=len(dp_data), epsilon=epsilon)

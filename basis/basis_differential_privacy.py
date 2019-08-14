@@ -57,6 +57,19 @@ def random_response_adjust(sum, N, epsilon):
     return (sum + p*N - N) / (2*p - 1)
 
 
+def coin_flip(bits, epsilon):
+    """
+    the coin flip process for bit array, it is random response with length = len(bits).
+    :param bits: the original data
+    :param epsilon: privacy budget
+    :return: the perturbed data
+    example, bits = [1,1,0,0], flags = [0,1,0,1], res = [0,1,1,0]
+    """
+    flags = np.random.binomial(n=1, p=epsilon2probability(epsilon), size=len(bits))
+    res = 1 - (bits + flags) % 2
+    return res
+
+
 if __name__ == '__main__':
     pass
 

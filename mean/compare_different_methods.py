@@ -27,13 +27,11 @@ if __name__ == '__main__':
         epsilon = 0.02 * i
         epsilon_list.append(epsilon)
 
-
         # duchi's solution
         duchi_data = [duchi.encode(value, epsilon) for value in data]
         mean_duchi = np.average(duchi_data)
         err_duchi = np.fabs(mean_duchi-mean_ori)
         error_duchi.append(err_duchi)
-
 
         # piecewise solution
         pm_data = [piecewise.encode(value, epsilon) for value in data]

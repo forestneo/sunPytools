@@ -47,7 +47,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tst_basis_differential_privacy">
+  <component name="RunManager" selected="Python.basis_differential_privacy">
     <configuration name="basis_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,14 +151,14 @@
       <item itemvalue="Python.piecewise" />
       <item itemvalue="Python.compare_different_methods" />
       <item itemvalue="Python.basis_differential_privacy" />
-      <item itemvalue="Python tests.pytest in tst_basis_differential_privacy.py" />
       <item itemvalue="Python.tst_basis_differential_privacy" />
+      <item itemvalue="Python tests.pytest in tst_basis_differential_privacy.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.basis_differential_privacy" />
         <item itemvalue="Python.tst_basis_differential_privacy" />
         <item itemvalue="Python tests.pytest in tst_basis_differential_privacy.py" />
-        <item itemvalue="Python.basis_differential_privacy" />
         <item itemvalue="Python.compare_different_methods" />
         <item itemvalue="Python.piecewise" />
       </list>

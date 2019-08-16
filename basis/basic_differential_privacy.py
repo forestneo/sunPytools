@@ -57,15 +57,13 @@ def random_response_pq(bits, probability_p, probability_q):
     """
     if not isinstance(bits, np.ndarray):
         raise Exception("the input type is not illegal @Func: random_response_pq.")
-    res = np.zeros([len(bits)])
-    for i in range(len(bits)):
-        if bits[i] == 1:
-            flag = np.random.binomial(n=1, p=probability_p)
-            res[i] = flag
-        else:
-            flag = np.random.binomial(n=1, p=probability_q)
-            res[i] = flag
-    # todo: this version is currently right, but need to optimized
+
+    index_one, index_zero = (bits == 1), (bits == 0)
+    # flags is used to represent flip or not, 1 represents unchanged, 0 represents flipping.
+    flags = np.zeros([bits.size], dtype=int)
+    flags[index_one] = np.random.binomial(n=1, p=probability_p)
+    flags[index_zero] = np.random.binomial(n=1, p=1-probability_q)
+    res = 1 - (bits + flags) % 2
     return res
 
 
@@ -106,8 +104,8 @@ def random_response_adjust(sum, N, epsilon):
 
 
 if __name__ == '__main__':
-    pass
-
+    a = np.asarray([1, 1, 1, 0, 0, 1, 0])
+    print(random_response_pq(bits=a, probability_p=1, probability_q=0.9))
 
 
 

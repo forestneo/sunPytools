@@ -7,7 +7,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-from basis import basis_differential_privacy as sdp
+from basis import basic_differential_privacy as sdp
 
 
 def generate_data(buckets=100, user_number=10000):

@@ -6,7 +6,7 @@
 
 
 import numpy as np
-from basis import basis_differential_privacy as dp
+from basis import basic_differential_privacy as dp
 
 
 def mean_estimation_experiment():

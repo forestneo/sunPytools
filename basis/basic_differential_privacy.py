@@ -103,6 +103,26 @@ def random_response_adjust(sum, N, epsilon):
     return (sum + p*N - N) / (2*p - 1)
 
 
+def k_random_response(value, values, epsilon):
+    """
+    the k-random response
+    :param value: current value
+    :param values: the possible value
+    :param epsilon: privacy budget
+    :return:
+    """
+    if not isinstance(values, list):
+        raise Exception("The values should be list")
+    if value not in values:
+        raise Exception("Errors in k-random response")
+    p = np.e ** epsilon / (np.e ** epsilon + len(values) - 1)
+    if np.random.random() < p:
+        return value
+
+    values.remove(value)
+    return values[np.random.randint(low=0, high=len(values))]
+
+
 if __name__ == '__main__':
     a = np.asarray([1, 1, 1, 0, 0, 1, 0])
     print(random_response_pq(bits=a, probability_p=1, probability_q=0.9))

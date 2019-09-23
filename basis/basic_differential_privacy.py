@@ -12,7 +12,7 @@ def epsilon2probability(epsilon, n=2):
     return np.e ** epsilon / (np.e ** epsilon + n - 1)
 
 
-def discretization(value, lower, upper):
+def discretization(value, lower=0, upper=1):
     """discretiza values
     :param value: value that needs to be discretized
     :param lower, the lower bound of discretized value
@@ -40,67 +40,46 @@ def perturbation(value, perturbed_value, epsilon):
     return value if rnd < p else perturbed_value
 
 
-def random_response_basic(bit, epsilon):
-    if bit not in [0, 1]:
-        raise Exception("The input value is not in [0, 1] @Func: random_response.")
-    return perturbation(value=bit, perturbed_value=1 - bit, epsilon=epsilon)
-
-
-def random_response_pq(bits, probability_p, probability_q):
+def random_response(bits, p, q=None):
     """
-    This is the generalized version of random response. When p+q=1, this mechanism turns to be the basic random response.
-    See this paper: Locally Differentially Private Protocols for Frequency Estimation
-    :param bits: the original data.
-    :param probability_p: the probability of 1->1
-    :param probability_q: the probability of 0->1
-    :return: the perturbed bis
+    random response
+    :param bits: can be int or np.ndarray
+    :param p: Pr[1->1]
+    :param q: Pr[0->1]
+    :return: the perturbed bits
     """
-    if not isinstance(bits, np.ndarray):
-        raise Exception("the input type is not illegal @Func: random_response_pq.")
+    q = 1-p if q is None else q
+    if isinstance(bits, int):
+        probability = p if bits == 1 else q
+        return np.random.binomial(n=1, p=probability)
+    elif isinstance(bits, np.ndarray):
+        for i in range(len(bits)):
+            probability = p if bits[i] == 1 else q
+            bits[i] = np.random.binomial(n=1, p=probability)
+        return bits
+    else:
+        raise Exception(type(bits), bits, p, q)
 
-    index_one, index_zero = (bits == 1), (bits == 0)
-    # flags is used to represent flip or not, 1 represents unchanged, 0 represents flipping.
-    flags = np.zeros([bits.size], dtype=int)
-    flags[index_one] = np.random.binomial(n=1, p=probability_p)
-    flags[index_zero] = np.random.binomial(n=1, p=1-probability_q)
-    res = 1 - (bits + flags) % 2
-    return res
 
-
-def random_response_pq_reverse(sum_of_bits, num_of_records, probability_p, probability_q):
+def random_response_reverse(bits_list, p, q=None):
     """
     decoder for function @random_response_pq
-    :param sum_of_bits:
-    :param num_of_records:
-    :param probability_p: the probability of 1->1
-    :param probability_q: the probability of 0->1
     :return:
     """
-    return (sum_of_bits - num_of_records * probability_q) / (probability_p - probability_q)
 
-
-def coin_flip(bits, epsilon):
-    """
-    the coin flip process for bit array, it is random response with length = len(bits).
-    :param bits: the original data
-    :param epsilon: privacy budget
-    :return: the perturbed data
-    example, bits = [1,1,0,0], flags = [0,1,0,1], res = [0,1,1,0]
-    """
-    flags = np.random.binomial(n=1, p=epsilon2probability(epsilon), size=len(bits))
-    res = 1 - (bits + flags) % 2
-    return res
-
-
-def random_response_adjust(sum, N, epsilon):
-    """
-    对random response的结果进行校正
-    :param sum: 收到数据中1的个数
-    :param N: 总的数据个数
-    :return: 实际中1的个数
-    """
-    p = epsilon2probability(epsilon)
-    return (sum + p*N - N) / (2*p - 1)
+    if not isinstance(bits_list, np.ndarray):
+        raise Exception("the type of data is wrong, ", type(bits_list))
+    q = 1 - p if q is None else q
+    if len(bits_list.shape) == 1:
+        sum_of_bits = np.sum(bits_list)
+        size = len(bits_list)
+        return (sum_of_bits - size * q) / (p - q)
+    elif len(bits_list.shape) == 2:
+        nd_sum = np.sum(bits_list, axis=0)
+        size = bits_list.shape[0]
+        return (nd_sum - size * q) / (p - q)
+    else:
+        raise Exception("The shape of input data cannot be processed! ", bits_list.shape)
 
 
 def k_random_response(value, values, epsilon):
@@ -124,8 +103,11 @@ def k_random_response(value, values, epsilon):
 
 
 if __name__ == '__main__':
-    a = np.asarray([1, 1, 1, 0, 0, 1, 0])
-    print(random_response_pq(bits=a, probability_p=1, probability_q=0.9))
-
-
-
+    # a = np.asarray([1, 1, 1, 0, 0, 1, 0])
+    # print(random_response_pq(bits=a, probability_p=1, probability_q=0.9))
+    original_data = np.random.binomial(n=1, p=0.6, size=1000000).reshape(100000, 10)
+    print("original sum: ", np.sum(original_data, axis=0))
+    pp = 0.8
+    pq = 0.2
+    perturbed_data = np.asarray([random_response(bits=original_data[i], p=pp, q=pq) for i in range(original_data.shape[0])])
+    print("estimated sum: ", random_response_reverse(bits_list=perturbed_data, p=pp, q=pq))

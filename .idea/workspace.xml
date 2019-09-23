@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sunDP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sunDP.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basis/basis_differential_privacy.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/basis_differential_privacy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basis/basic_differential_privacy.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/basic_differential_privacy.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +30,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -47,7 +49,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.basis_differential_privacy">
+  <component name="RunManager" selected="Python.basic_differential_privacy">
+    <configuration name="basic_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sunDP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/basis" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/basic_differential_privacy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="basis_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -60,7 +83,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/basis_differential_privacy.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\ForestNeo\OneDrive\_Project\sunDP\basis\basic_differential_privacy.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -82,27 +105,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mean/compare_different_methods.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="piecewise" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
-      <module name="sunDP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mean" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mean/piecewise.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,19 +150,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.piecewise" />
       <item itemvalue="Python.compare_different_methods" />
       <item itemvalue="Python.basis_differential_privacy" />
       <item itemvalue="Python.tst_basis_differential_privacy" />
+      <item itemvalue="Python.basic_differential_privacy" />
       <item itemvalue="Python tests.pytest in tst_basis_differential_privacy.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.basic_differential_privacy" />
         <item itemvalue="Python.basis_differential_privacy" />
         <item itemvalue="Python.tst_basis_differential_privacy" />
         <item itemvalue="Python tests.pytest in tst_basis_differential_privacy.py" />
         <item itemvalue="Python.compare_different_methods" />
-        <item itemvalue="Python.piecewise" />
       </list>
     </recent_temporary>
   </component>

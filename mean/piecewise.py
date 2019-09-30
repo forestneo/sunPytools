@@ -8,7 +8,6 @@
 Piecewise 有两种实现方法
 第一种是原作者给出的，我由C++代码改成了python版本的代码，叫做 PM(value, epsilon)
 第二种是我给出的，按照我的命名方法，叫做 encode(value, epsilon)
-
 '''
 
 
@@ -17,7 +16,7 @@ import matplotlib.pyplot as plt
 
 
 # 作者的实现方法
-def PM(value, epsilon):
+def encode_piecewise(value, epsilon):
     z = np.e**(epsilon/2)
     P1 = (value + 1) / (2 + 2 * z)
     P2 = z / (z + 1)
@@ -38,7 +37,7 @@ def PM(value, epsilon):
 
 
 # 我的实现方法
-def encode(value, epsilon):
+def encode_piecewise_mine(value, epsilon):
     C = (np.e**(epsilon/2)+1) / (np.e**(epsilon/2)-1)
     p = (np.e**epsilon - np.e**(epsilon/2)) / (2*np.e**(epsilon/2)+2)
     L = (C+1)/2 * value - (C-1)/2

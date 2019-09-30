@@ -10,7 +10,8 @@ from basis import basic_differential_privacy as dp
 import numpy as np
 import matplotlib.pyplot as plt
 
-def encode(value, epsilon):
+
+def encode_duchi(value, epsilon):
     value = dp.discretization(value=value, lower=-1, upper=1)
     value = dp.perturbation(value=value, perturbed_value=-value, epsilon=epsilon)
     value = (np.e**epsilon+1)/(np.e**epsilon-1) * value

@@ -40,46 +40,46 @@ def perturbation(value, perturbed_value, epsilon):
     return value if rnd < p else perturbed_value
 
 
-def random_response(bits, p, q=None):
+def random_response(data, p, q=None):
     """
     random response
-    :param bits: can be int or np.ndarray
+    :param data: can be int or np.ndarray
     :param p: Pr[1->1]
     :param q: Pr[0->1]
     :return: the perturbed bits
     """
     q = 1-p if q is None else q
-    if isinstance(bits, int):
-        probability = p if bits == 1 else q
+    if isinstance(data, int):
+        probability = p if data == 1 else q
         return np.random.binomial(n=1, p=probability)
-    elif isinstance(bits, np.ndarray):
-        for i in range(len(bits)):
-            probability = p if bits[i] == 1 else q
-            bits[i] = np.random.binomial(n=1, p=probability)
-        return bits
+    elif isinstance(data, np.ndarray):
+        for i in range(len(data)):
+            probability = p if data[i] == 1 else q
+            data[i] = np.random.binomial(n=1, p=probability)
+        return data
     else:
-        raise Exception(type(bits), bits, p, q)
+        raise Exception(type(data), data, p, q)
 
 
-def random_response_reverse(bits_list, p, q=None):
+def random_response_reverse(data_list, p, q=None):
     """
     decoder for function @random_response_pq
     :return:
     """
 
-    if not isinstance(bits_list, np.ndarray):
-        raise Exception("the type of data is wrong, ", type(bits_list))
+    if not isinstance(data_list, np.ndarray):
+        raise Exception("the type of data is wrong, ", type(data_list))
     q = 1 - p if q is None else q
-    if len(bits_list.shape) == 1:
-        sum_of_bits = np.sum(bits_list)
-        size = len(bits_list)
+    if len(data_list.shape) == 1:
+        sum_of_bits = np.sum(data_list)
+        size = len(data_list)
         return (sum_of_bits - size * q) / (p - q)
-    elif len(bits_list.shape) == 2:
-        nd_sum = np.sum(bits_list, axis=0)
-        size = bits_list.shape[0]
+    elif len(data_list.shape) == 2:
+        nd_sum = np.sum(data_list, axis=0)
+        size = data_list.shape[0]
         return (nd_sum - size * q) / (p - q)
     else:
-        raise Exception("The shape of input data cannot be processed! ", bits_list.shape)
+        raise Exception("The shape of input data cannot be processed! ", data_list.shape)
 
 
 def k_random_response(value, values, epsilon):
@@ -109,5 +109,5 @@ if __name__ == '__main__':
     print("original sum: ", np.sum(original_data, axis=0))
     pp = 0.8
     pq = 0.2
-    perturbed_data = np.asarray([random_response(bits=original_data[i], p=pp, q=pq) for i in range(original_data.shape[0])])
-    print("estimated sum: ", random_response_reverse(bits_list=perturbed_data, p=pp, q=pq))
+    perturbed_data = np.asarray([random_response(data=original_data[i], p=pp, q=pq) for i in range(original_data.shape[0])])
+    print("estimated sum: ", random_response_reverse(data_list=perturbed_data, p=pp, q=pq))

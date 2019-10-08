@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/forestneo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/forestneo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sunDP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sunDP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basis/basic_differential_privacy.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/basic_differential_privacy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/compare_different_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/compare_different_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/duchi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/duchi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mean/piecewise.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/piecewise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean_estimation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_examples/basis/tst_basis_differential_privacy.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_examples/basis/tst_basis_differential_privacy.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +41,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Privcy-Preserving-KV" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -47,7 +61,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tst_basis_differential_privacy">
+  <component name="RunManager" selected="Python.mean_estimation">
     <configuration name="compare_different_methods" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,9 +176,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.mean_estimation" />
         <item itemvalue="Python.tst_basis_differential_privacy" />
         <item itemvalue="Python.histogram_estimation" />
-        <item itemvalue="Python.mean_estimation" />
         <item itemvalue="Python.compare_different_methods" />
         <item itemvalue="Python.piecewise" />
       </list>

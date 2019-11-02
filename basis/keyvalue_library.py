@@ -63,6 +63,9 @@ def kv_en_privkv(kv, epsilon1, epsilon2, set_value=None):
 
 
 def kv_de_privkv(p_kv_list: np.ndarray, epsilon1, epsilon2):
+    if not isinstance(p_kv_list, np.ndarray):
+        raise Exception("type error of kvt: ", type(p_kv_list))
+
     p1 = np.e**epsilon1 / (1 + np.e**epsilon1)
     p2 = np.e**epsilon2 / (1 + np.e**epsilon2)
 
@@ -86,17 +89,13 @@ def kv_de_privkv(p_kv_list: np.ndarray, epsilon1, epsilon2):
 
 def kv_en_state_encoding(kv, epsilon):
     """
-        The unary encoding, also known as k-random response, is used in user side. It works as follows
-        First, key value data is mapped into {0, 1, 2}. Basically, [0,0]->1; [1,-1]->0; [1,1]->2;
-        Then the k-rr is used to report.
-        :param kv: key value data, in which k in {0,1} and value in [-1,1]
-        :param epsilon: privacy budget
-        :return: the encoded key value data, the res is in {0,1,2}
-        """
-    if not isinstance(kv, np.ndarray) or len(kv) is not 2:
-        print(type(kv), len(kv))
-        raise Exception("type error")
-
+    The unary encoding, also known as k-random response, is used in user side. It works as follows
+    First, key value data is mapped into {0, 1, 2}. Basically, [0,0]->1; [1,-1]->0; [1,1]->2;
+    Then the k-rr is used to report.
+    :param kv: key value data, in which k in {0,1} and value in [-1,1]
+    :param epsilon: privacy budget
+    :return: the encoded key value data, the res is in {0,1,2}
+    """
     k, v = kv[0], ldplib.discretization(value=kv[1], lower=-1, upper=1)
     unary = k * v + 1
     return ldplib.k_random_response(unary, values=[0, 1, 2], epsilon=epsilon)
@@ -109,6 +108,9 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
     :param epsilon: the privacy budget
     :return: the estimated frequency and mean.
     """
+    if not isinstance(p_kv_list, np.ndarray):
+        raise Exception("type error of p_kv_list: ", type(p_kv_list))
+
     zero = len(np.where(p_kv_list == 1)[0])  # [0,0]
     pos = len(np.where(p_kv_list == 2)[0])  # [1,1]
     neg = len(np.where(p_kv_list == 0)[0])  # [1,-1]
@@ -126,11 +128,23 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
 
 
 def my_run_tst():
-    # generate 10000 kv pairs with f=0.7 and m=0.3
+    # generate 100000 kv pairs with f=0.7 and m=0.3
     kv_list = [[np.random.binomial(1, 0.7), np.clip(a=np.random.normal(loc=0.3, scale=0.2), a_min=-1, a_max=1)] for _ in
-               range(10000)]
+               range(100000)]
     f, m = kvlist_get_baseline(kv_list=np.asarray(kv_list))
     print("this is the baseline f=%.4f, m=%.4f" % (f, m))
+
+    epsilon = 1
+
+    # the PrivKV method
+    pirvkv_kv_list = [kv_en_privkv(kv, epsilon1=epsilon/2, epsilon2=epsilon/2) for kv in kv_list]
+    f_privkv, m_privkv = kv_de_privkv(p_kv_list=np.asarray(pirvkv_kv_list), epsilon1=epsilon/2, epsilon2=epsilon/2)
+    print("this is the privkv f=%.4f, m=%.4f" % (f_privkv, m_privkv))
+
+    # the StateEncoding method
+    se_kv_list = [kv_en_state_encoding(kv, epsilon) for kv in kv_list]
+    f_se, m_se = kv_de_state_encoding(p_kv_list=np.asarray(se_kv_list), epsilon=epsilon)
+    print("this is the se f=%.4f, m=%.4f" % (f_se, m_se))
 
 
 if __name__ == '__main__':

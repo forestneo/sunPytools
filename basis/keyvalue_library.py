@@ -9,6 +9,7 @@
 
 import numpy as np
 import basis.local_differential_privacy_library as ldplib
+from mean.duchi import encode_duchi
 
 
 def kvlist_get_baseline(kv_list: np.ndarray, discretization=False):
@@ -62,12 +63,12 @@ def kv_en_privkv(kv, epsilon1, epsilon2, set_value=None):
     return [p_k, p_v]
 
 
-def kv_de_privkv(p_kv_list: np.ndarray, epsilon1, epsilon2):
+def kv_de_privkv(p_kv_list: np.ndarray, epsilon_k, epsilon_v):
     if not isinstance(p_kv_list, np.ndarray):
-        raise Exception("type error of kvt: ", type(p_kv_list))
+        raise Exception("type error of p_kv_list: ", type(p_kv_list))
 
-    p1 = np.e**epsilon1 / (1 + np.e**epsilon1)
-    p2 = np.e**epsilon2 / (1 + np.e**epsilon2)
+    p1 = np.e ** epsilon_k / (1 + np.e ** epsilon_k)
+    p2 = np.e ** epsilon_v / (1 + np.e ** epsilon_v)
 
     k_list = p_kv_list[:, 0]
     v_list = p_kv_list[:, 1]
@@ -127,6 +128,24 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
     return f, np.clip(m, -1, 1)
 
 
+def kv_en_f2m(kv, epsilon_k, epsilon_v, method, set_value=0):
+    v = kv[1] if kv[0] == 1 else set_value
+    p_k = ldplib.random_response(data=int(kv[0]), p=ldplib.epsilon2probability(epsilon_k))
+    p_v = method(v, epsilon_v)
+    return p_k, p_v
+
+
+def kv_de_f2m(p_kv_list: np.ndarray, epsilon_k, set_value=0):
+    if not isinstance(p_kv_list, np.ndarray):
+        raise Exception("type error of p_kv_list: ", type(p_kv_list))
+    f = np.average(p_kv_list[:, 0])
+    p = ldplib.epsilon2probability(epsilon=epsilon_k)
+    f = (p-1+f) / (2*p-1)
+    m_all = np.average(p_kv_list[:, 1])
+    m = (m_all - (1 - f) * set_value) / f
+    return f, np.clip(m, -1, 1)
+
+
 def my_run_tst():
     # generate 100000 kv pairs with f=0.7 and m=0.3
     kv_list = [[np.random.binomial(1, 0.7), np.clip(a=np.random.normal(loc=0.3, scale=0.2), a_min=-1, a_max=1)] for _ in
@@ -134,17 +153,23 @@ def my_run_tst():
     f, m = kvlist_get_baseline(kv_list=np.asarray(kv_list))
     print("this is the baseline f=%.4f, m=%.4f" % (f, m))
 
-    epsilon = 1
+    epsilon = 3
 
     # the PrivKV method
     pirvkv_kv_list = [kv_en_privkv(kv, epsilon1=epsilon/2, epsilon2=epsilon/2) for kv in kv_list]
-    f_privkv, m_privkv = kv_de_privkv(p_kv_list=np.asarray(pirvkv_kv_list), epsilon1=epsilon/2, epsilon2=epsilon/2)
+    f_privkv, m_privkv = kv_de_privkv(p_kv_list=np.asarray(pirvkv_kv_list), epsilon_k=epsilon / 2, epsilon_v=epsilon / 2)
     print("this is the privkv f=%.4f, m=%.4f" % (f_privkv, m_privkv))
 
     # the StateEncoding method
     se_kv_list = [kv_en_state_encoding(kv, epsilon) for kv in kv_list]
     f_se, m_se = kv_de_state_encoding(p_kv_list=np.asarray(se_kv_list), epsilon=epsilon)
     print("this is the se f=%.4f, m=%.4f" % (f_se, m_se))
+
+    # the f2m-duchi method
+    f2m_kv_list = [kv_en_f2m(kv=kv, epsilon_k=epsilon/2, epsilon_v=epsilon/2, method=encode_duchi) for kv in kv_list]
+    f_f2m, m_f2m = kv_de_f2m(p_kv_list=np.asarray(f2m_kv_list), epsilon_k=epsilon/2)
+    print("this is the f2m f=%.4f, m=%.4f" % (f_f2m, m_f2m))
+
 
 
 if __name__ == '__main__':

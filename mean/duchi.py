@@ -6,7 +6,7 @@
 # @Software: PyCharm
 
 
-from basis import basic_differential_privacy as dp
+from basis import local_differential_privacy_library as dp
 import numpy as np
 import matplotlib.pyplot as plt
 

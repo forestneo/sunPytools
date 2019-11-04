@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2019/11/2
+# @Time    : 2019-11-01 10:37
 # @Author  : ForestNeo
-# @Site    : forestneo.com
 # @Email   : dr.forestneo@gmail.com
-# @File    : keyvalue_library.py
 # @Software: PyCharm
-# @Function: 
+
 
 import numpy as np
 import basis.local_differential_privacy_library as ldplib
@@ -78,12 +76,12 @@ def kv_de_privkv(p_kv_list: np.ndarray, epsilon_k, epsilon_v):
     n1 = len(np.where(v_list == 1)[0])
     n2 = len(np.where(v_list == -1)[0])
 
-    N = n1 + n2
-    n1_star = (p2-1) / (2*p2-1) * N + n1 / (2*p2-1)
-    n2_star = (p2-1) / (2*p2-1) * N + n2 / (2*p2-1)
-    n1_star = np.clip(n1_star, 0, N)
-    n2_star = np.clip(n2_star, 0, N)
-    m = (n1_star - n2_star) / N
+    n_all = n1 + n2
+    n1_star = (p2-1) / (2*p2-1) * n_all + n1 / (2*p2-1)
+    n2_star = (p2-1) / (2*p2-1) * n_all + n2 / (2*p2-1)
+    n1_star = np.clip(n1_star, 0, n_all)
+    n2_star = np.clip(n2_star, 0, n_all)
+    m = (n1_star - n2_star) / n_all
 
     return f, m
 
@@ -125,7 +123,7 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
 
     f = (est_cnt[1] + est_cnt[2]) / cnt_all
     m = (est_cnt[1] - est_cnt[2]) / (est_cnt[1] + est_cnt[2])
-    return f, np.clip(m, -1, 1)
+    return f, m
 
 
 def kv_en_f2m(kv, epsilon_k, epsilon_v, method, set_value=0):
@@ -143,7 +141,7 @@ def kv_de_f2m(p_kv_list: np.ndarray, epsilon_k, set_value=0):
     f = (p-1+f) / (2*p-1)
     m_all = np.average(p_kv_list[:, 1])
     m = (m_all - (1 - f) * set_value) / f
-    return f, np.clip(m, -1, 1)
+    return f, m
 
 
 def my_run_tst():
@@ -157,7 +155,7 @@ def my_run_tst():
 
     # the PrivKV method
     pirvkv_kv_list = [kv_en_privkv(kv, epsilon1=epsilon/2, epsilon2=epsilon/2) for kv in kv_list]
-    f_privkv, m_privkv = kv_de_privkv(p_kv_list=np.asarray(pirvkv_kv_list), epsilon_k=epsilon / 2, epsilon_v=epsilon / 2)
+    f_privkv, m_privkv = kv_de_privkv(p_kv_list=np.asarray(pirvkv_kv_list), epsilon_k=epsilon/2, epsilon_v=epsilon/2)
     print("this is the privkv f=%.4f, m=%.4f" % (f_privkv, m_privkv))
 
     # the StateEncoding method
@@ -169,7 +167,6 @@ def my_run_tst():
     f2m_kv_list = [kv_en_f2m(kv=kv, epsilon_k=epsilon/2, epsilon_v=epsilon/2, method=encode_duchi) for kv in kv_list]
     f_f2m, m_f2m = kv_de_f2m(p_kv_list=np.asarray(f2m_kv_list), epsilon_k=epsilon/2)
     print("this is the f2m f=%.4f, m=%.4f" % (f_f2m, m_f2m))
-
 
 
 if __name__ == '__main__':

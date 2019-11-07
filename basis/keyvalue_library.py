@@ -145,13 +145,18 @@ def kv_de_f2m(p_kv_list: np.ndarray, epsilon_k, set_value=0):
 
 
 def my_run_tst():
+    # initial random seed, optional
+    np.random.seed(10)
+
     # generate 100000 kv pairs with f=0.7 and m=0.3
     kv_list = [[np.random.binomial(1, 0.7), np.clip(a=np.random.normal(loc=0.3, scale=0.2), a_min=-1, a_max=1)] for _ in
                range(100000)]
-    f, m = kvlist_get_baseline(kv_list=np.asarray(kv_list))
-    print("this is the baseline f=%.4f, m=%.4f" % (f, m))
+    kv_list = np.asarray(kv_list)
+    kv_list[:, 1] = kv_list[:, 1] * kv_list[:, 0]
+    f_base, m_base = kvlist_get_baseline(kv_list=np.asarray(kv_list))
+    print("this is the baseline f=%.4f, m=%.4f" % (f_base, m_base))
 
-    epsilon = 3
+    epsilon = 2
 
     # the PrivKV method
     pirvkv_kv_list = [kv_en_privkv(kv, epsilon1=epsilon/2, epsilon2=epsilon/2) for kv in kv_list]

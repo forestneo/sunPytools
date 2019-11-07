@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/sunlin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/sunlin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/basis/keyvalue_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/keyvalue_library.py" afterDir="false" />
     </list>
@@ -94,7 +93,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="keyvalue_library" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="keyvalue_library" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />

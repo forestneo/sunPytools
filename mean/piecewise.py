@@ -60,3 +60,6 @@ def encode_piecewise_mine(value, epsilon):
 
     return rnd_v
 
+
+def decode_piecewise(value_list, epsilon):
+    return np.average(value_list)

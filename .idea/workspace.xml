@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basis/keyvalue_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/keyvalue_library.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/compare_different_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/compare_different_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/duchi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/duchi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/piecewise.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/piecewise.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.keyvalue_library">
+  <component name="RunManager" selected="Python.compare_different_methods">
     <configuration name="basic_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -72,7 +74,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="histogram_estimation" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+    <configuration name="compare_different_methods" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -80,11 +82,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mean" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/histogram_estimation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mean/compare_different_methods.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="duchi" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sunDP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mean" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mean/duchi.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -135,41 +158,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tst_basis_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="sunDP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_examples/basis" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_examples/basis/tst_basis_differential_privacy.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.mean_estimation" />
-      <item itemvalue="Python.histogram_estimation" />
-      <item itemvalue="Python.tst_basis_differential_privacy" />
       <item itemvalue="Python.basic_differential_privacy" />
       <item itemvalue="Python.keyvalue_library" />
+      <item itemvalue="Python.duchi" />
+      <item itemvalue="Python.compare_different_methods" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.compare_different_methods" />
+        <item itemvalue="Python.duchi" />
         <item itemvalue="Python.keyvalue_library" />
         <item itemvalue="Python.basic_differential_privacy" />
         <item itemvalue="Python.mean_estimation" />
-        <item itemvalue="Python.tst_basis_differential_privacy" />
-        <item itemvalue="Python.histogram_estimation" />
       </list>
     </recent_temporary>
   </component>

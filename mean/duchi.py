@@ -17,3 +17,8 @@ def encode_duchi(value, epsilon):
     value = (np.e**epsilon+1)/(np.e**epsilon-1) * value
     return value
 
+
+def decode_duchi(value_list, epsilon):
+    return np.average(value_list)
+
+

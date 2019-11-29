@@ -4,7 +4,6 @@
 # @Email   : dr.forestneo@gmail.com
 # @Software: PyCharm
 
-#
 
 from mean import duchi
 from mean import piecewise
@@ -12,7 +11,57 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-if __name__ == '__main__':
+def get_mean_from_table(value_table: np.ndarray, epsilon, en_mtd, de_mtd):
+    """
+    :param value_table: the value table
+    :param epsilon:
+    :param en_mtd: the encoding method
+    :param de_mtd: the decoding method
+    :return:
+    """
+    [n, d] = value_table.shape
+    index_list = [[] for i in range(d)]
+    for i in range(n):
+        index = np.random.randint(d)
+        index_list[index].append(en_mtd(value_table[i][index], epsilon))
+
+    mean_list = [[] for i in range(d)]
+    for i in range(d):
+        mean_list[i] = de_mtd(index_list[i], epsilon)
+    return np.asarray(mean_list)
+
+
+def my_run_tst():
+    # np.random.seed(10)
+    value_table = np.random.normal(loc=0.2, scale=0.2, size=[100000, 10])
+    value_table = np.clip(value_table, -1, 1)
+    m_base = np.mean(value_table, axis=0)
+
+    # 存放结果
+    epsilon_list, error_duchi, error_piecewise = [], [], []
+
+    for i in range(1, 10):
+        epsilon = 0.02 * i
+        epsilon_list.append(epsilon)
+
+        m_est_duchi = get_mean_from_table(value_table=value_table, epsilon=epsilon, en_mtd=duchi.encode_duchi,
+                                          de_mtd=duchi.decode_duchi)
+        m_est_pm = get_mean_from_table(value_table=value_table, epsilon=epsilon, en_mtd=piecewise.encode_piecewise,
+                                       de_mtd=piecewise.decode_piecewise)
+        print(epsilon, m_est_duchi, m_est_pm)
+        error_duchi.append(np.average(np.fabs(m_est_duchi-m_base)))
+        error_piecewise.append(np.average(np.fabs(m_est_pm-m_base)))
+    # 画图
+    fig = plt.figure(figsize=[12, 5])
+    plt.plot(epsilon_list, error_duchi, label="duchi")
+    plt.plot(epsilon_list, error_piecewise, label="piecewise")
+    plt.xlabel("epsilon")
+    plt.ylabel("error")
+    plt.legend()
+    plt.show()
+
+
+def my_run_tst_2():
     # 产生数据并归一化
     data = np.random.normal(loc=0.2, scale=0.3, size=100000)
     data = np.clip(data, -1, 1)
@@ -23,8 +72,8 @@ if __name__ == '__main__':
     # 存放结果
     epsilon_list, error_duchi, error_piecewise = [], [], []
 
-    for i in range(1, 50):
-        epsilon = 0.02 * i
+    for i in range(1, 10):
+        epsilon = 0.1 * i
         epsilon_list.append(epsilon)
 
         # duchi's solution
@@ -49,4 +98,10 @@ if __name__ == '__main__':
     plt.ylabel("error")
     plt.legend()
     plt.show()
+
+
+if __name__ == '__main__':
+    my_run_tst()
+
+
 

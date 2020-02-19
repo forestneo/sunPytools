@@ -6,7 +6,7 @@
 # @Site    : forestneo.com
 # @Software: PyCharm
 
-from basis import basic_differential_privacy as dp
+from basis import local_differential_privacy_library as dp
 import numpy as np
 
 
@@ -21,12 +21,12 @@ def my_test_for_random_response_pq():
     original_sum = np.sum(original_data_list, axis=0)
     print(original_sum)
 
-    p, q = 0.8, 0.3
-    perturbed_data_list = [dp.random_response_pq(bits=original_data_list[i], probability_p=p, probability_q=q) for i in range(len(original_data_list))]
+    p, q = 0.9, 0.1
+    perturbed_data_list = [dp.random_response(data=original_data_list[i], p=p, q=q) for i in range(len(original_data_list))]
     perturbed_sum = np.sum(np.asarray(perturbed_data_list), axis=0)
     print(perturbed_sum)
 
-    adjust_sum = dp.random_response_pq_reverse(perturbed_sum, len(original_data_list), p, q)
+    adjust_sum = dp.random_response_reverse(data_list=np.asarray(perturbed_data_list), p=p, q=q)
     print(adjust_sum)
 
 

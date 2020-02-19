@@ -6,13 +6,19 @@
 # @Software: PyCharm
 
 
-from basis import basic_differential_privacy as dp
+from basis import local_differential_privacy_library as dp
 import numpy as np
 import matplotlib.pyplot as plt
 
-def encode(value, epsilon):
+
+def encode_duchi(value, epsilon):
     value = dp.discretization(value=value, lower=-1, upper=1)
     value = dp.perturbation(value=value, perturbed_value=-value, epsilon=epsilon)
     value = (np.e**epsilon+1)/(np.e**epsilon-1) * value
     return value
+
+
+def decode_duchi(value_list, epsilon):
+    return np.average(value_list)
+
 

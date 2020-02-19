@@ -7,7 +7,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-from basis import basic_differential_privacy as sdp
+from basis import local_differential_privacy_library as dp
 
 
 def generate_data(buckets=100, user_number=10000):
@@ -26,30 +26,29 @@ def random_response_for_hist(user_vector, epsilon):
     :param epsilon: privacy budget
     :return: [1,0,0,1,1,...]
     """
-    for i in range(len(user_vector)):
-        user_vector[i] = sdp.random_response_basic(user_vector[i], epsilon=epsilon / 2)
-    return user_vector
+    return dp.random_response(data=user_vector, p=dp.epsilon2probability(epsilon=epsilon/2))
 
 
 if __name__ == '__main__':
     # 生成数据
-    users = generate_data(user_number=100000)
+    data_list = generate_data(user_number=100000)
 
     # 得到原始数据的直方图
-    original_hist = np.sum(users, axis=0)
+    original_hist = np.sum(data_list, axis=0)
     print("this is original hist: \n", original_hist)
 
     # 隐私参数
-    epsilon = np.log(3)
+    epsilon = 1
 
     # aggregator收集并处理数据
-    rr_user = np.asarray([random_response_for_hist(user, epsilon) for user in users])
-    rr_sums = np.sum(rr_user, axis=0)
-    print("this is the hist by the aggregator: \n", rr_sums)
+    perturbed_data_list = np.asarray([random_response_for_hist(user, epsilon) for user in data_list])
+    print("this is the hist by the aggregator: \n", np.sum(perturbed_data_list, axis=0))
 
     # aggregator校正数据
-    estimate_hist = [sdp.random_response_adjust(rr_sum, len(users), epsilon/2) for rr_sum in rr_sums]
-    print(np.sum(estimate_hist))
+    # estimate_hist = [dp.random_response_adjust(rr_sum, len(data_list), epsilon / 2) for rr_sum in rr_sums]
+    # print(np.sum(estimate_hist))
+
+    estimate_hist = dp.random_response_reverse(data_list=perturbed_data_list, p=dp.epsilon2probability(epsilon=epsilon/2))
 
     # 展示原始数据的直方图
     print("this is estimated hist: \n", estimate_hist)

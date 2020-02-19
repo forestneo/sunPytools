@@ -6,7 +6,7 @@
 
 
 import numpy as np
-from basis import basic_differential_privacy as dp
+from basis import local_differential_privacy_library as dp
 
 
 def mean_estimation_experiment():
@@ -20,10 +20,9 @@ def mean_estimation_experiment():
     epsilon = 1
 
     discretized_data = [dp.discretization(value=value, lower=0, upper=1) for value in data]
-    dp_data = [dp.random_response_basic(bit=value, epsilon=epsilon) for value in discretized_data]
+    dp_data = [dp.random_response(data=value, p=dp.epsilon2probability(epsilon=epsilon)) for value in discretized_data]
 
-    cnt_one = np.sum(dp_data)
-    est_one = dp.random_response_adjust(sum=cnt_one, N=len(dp_data), epsilon=epsilon)
+    est_one = dp.random_response_reverse(data_list=np.asarray(dp_data), p=dp.epsilon2probability(epsilon=epsilon))
     est_mean = est_one / len(dp_data)
 
     print("the estimated mean is: ", est_mean)

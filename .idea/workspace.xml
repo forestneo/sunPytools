@@ -3,13 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basis/basis_differential_privacy.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/basis_differential_privacy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/compare_different_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/compare_different_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/duchi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/duchi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean/piecewise.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean/piecewise.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="sunDP" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -28,7 +33,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -47,8 +52,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.basis_differential_privacy">
-    <configuration name="basis_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.compare_different_methods">
+    <configuration name="basic_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -60,7 +65,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/basis_differential_privacy.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/local_differential_privacy_library.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -90,7 +95,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="piecewise" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+    <configuration name="duchi" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -102,7 +107,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mean/piecewise.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mean/duchi.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -111,7 +116,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tst_basis_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="keyvalue_library" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -119,11 +124,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_examples/basis" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/basis" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_examples/basis/tst_basis_differential_privacy.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/keyvalue_library.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -132,35 +137,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in tst_basis_differential_privacy.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="mean_estimation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_examples/basis" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_examples/basis/tst_basis_differential_privacy.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mean_estimation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.piecewise" />
+      <item itemvalue="Python.mean_estimation" />
+      <item itemvalue="Python.basic_differential_privacy" />
+      <item itemvalue="Python.keyvalue_library" />
+      <item itemvalue="Python.duchi" />
       <item itemvalue="Python.compare_different_methods" />
-      <item itemvalue="Python.basis_differential_privacy" />
-      <item itemvalue="Python.tst_basis_differential_privacy" />
-      <item itemvalue="Python tests.pytest in tst_basis_differential_privacy.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.basis_differential_privacy" />
-        <item itemvalue="Python.tst_basis_differential_privacy" />
-        <item itemvalue="Python tests.pytest in tst_basis_differential_privacy.py" />
         <item itemvalue="Python.compare_different_methods" />
-        <item itemvalue="Python.piecewise" />
+        <item itemvalue="Python.duchi" />
+        <item itemvalue="Python.keyvalue_library" />
+        <item itemvalue="Python.basic_differential_privacy" />
+        <item itemvalue="Python.mean_estimation" />
       </list>
     </recent_temporary>
   </component>

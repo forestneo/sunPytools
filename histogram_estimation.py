@@ -26,7 +26,7 @@ def random_response_for_hist(user_vector, epsilon):
     :param epsilon: privacy budget
     :return: [1,0,0,1,1,...]
     """
-    return dp.random_response(data=user_vector, p=dp.epsilon2probability(epsilon=epsilon/2))
+    return dp.random_response_old(B=user_vector, p=dp.eps2p(epsilon=epsilon / 2))
 
 
 if __name__ == '__main__':
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     # estimate_hist = [dp.random_response_adjust(rr_sum, len(data_list), epsilon / 2) for rr_sum in rr_sums]
     # print(np.sum(estimate_hist))
 
-    estimate_hist = dp.random_response_reverse(data_list=perturbed_data_list, p=dp.epsilon2probability(epsilon=epsilon/2))
+    estimate_hist = dp.random_response_reverse(data_list=perturbed_data_list, p=dp.eps2p(epsilon=epsilon / 2))
 
     # 展示原始数据的直方图
     print("this is estimated hist: \n", estimate_hist)

@@ -6,19 +6,14 @@
 
 #
 import numpy as np
+import basis.probability_library as pl
+import time
 
-
-def epsilon2probability(epsilon, n=2):
+def eps2p(epsilon, n=2):
     return np.e ** epsilon / (np.e ** epsilon + n - 1)
 
 
 def discretization(value, lower=0, upper=1):
-    """discretiza values
-    :param value: value that needs to be discretized
-    :param lower, the lower bound of discretized value
-    :param upper: the upper bound of discretized value
-    :return: the discretized value
-    """
     if value > upper or value < lower:
         raise Exception("the range of value is not valid in Function @Func: discretization")
 
@@ -28,42 +23,34 @@ def discretization(value, lower=0, upper=1):
 
 
 def perturbation(value, perturbed_value, epsilon):
-    """
-    perturbation, (random response is a kind of perturbation)
-    :param value: the original value
-    :param perturbed_value: the perturbed value
-    :param epsilon: privacy budget
-    :return: dp version of perturbation
-    """
-    p = epsilon2probability(epsilon)
-    rnd = np.random.random()
-    return value if rnd < p else perturbed_value
+    return value if pl.is_probability(eps2p(epsilon)) else perturbed_value
 
 
-def random_response(data, p, q=None):
+def random_response_old(B, p, q=None):
     """
     random response
-    :param data: can be int or np.ndarray
+    :param B: can be int or np.ndarray
     :param p: Pr[1->1]
     :param q: Pr[0->1]
     :return: the perturbed bits
     """
     q = 1-p if q is None else q
-    if isinstance(data, int):
-        probability = p if data == 1 else q
+    if isinstance(B, int):
+        probability = p if B == 1 else q
         return np.random.binomial(n=1, p=probability)
-    elif isinstance(data, np.ndarray):
-        for i in range(len(data)):
-            probability = p if data[i] == 1 else q
-            data[i] = np.random.binomial(n=1, p=probability)
-        return data
+    elif isinstance(B, np.ndarray):
+        B = np.array(B)
+        for i in range(len(B)):
+            probability = p if B[i] == 1 else q
+            B[i] = np.random.binomial(n=1, p=probability)
+        return B
     else:
-        raise Exception(type(data), data, p, q)
+        raise Exception(type(B), B, p, q)
 
 
 def random_response_reverse(data_list, p, q=None):
     """
-    decoder for function @random_response_pq
+    decoder for function @random_response_old
     :return:
     """
 
@@ -102,12 +89,72 @@ def k_random_response(value, values, epsilon):
     return values[np.random.randint(low=0, high=len(values))]
 
 
+def coin_flip(bits: np.ndarray, flip_flags: np.ndarray):
+    if not (isinstance(bits, np.ndarray) or isinstance(flip_flags, np.ndarray)):
+        raise Exception("Type Err: ", type(bits), type(flip_flags))
+    if not bits.shape == flip_flags.shape:
+        raise Exception("Length Err: ", bits.shape, flip_flags.shape)
+    # the 1 in F is not to flip
+    # B F B'
+    # 1 1 1
+    # 1 0 0
+    # 0 1 0
+    # 0 0 1
+    return (bits + flip_flags + 1) % 2
+
+
+def random_response(bits: np.ndarray, p, q=None):
+    """
+    :param bits: bits
+    :param p: probability of 1->1
+    :param q: probability of 0->1
+    update: 2020.02.25
+    """
+    q = 1 - p if q is None else q
+    if isinstance(bits, int):
+        probability = p if bits == 1 else q
+        return np.random.binomial(n=1, p=probability)
+
+    if not isinstance(bits, np.ndarray):
+        raise Exception("Type Err: ", type(bits))
+
+    if len(bits.shape) != 1:
+        raise Exception("Size Err: ", bits.shape)
+    flip_flags = np.where(bits == 1, np.random.binomial(1, p, len(bits)), np.random.binomial(1, 1 - q, len(bits)))
+    return coin_flip(bits, flip_flags)
+
+
+def unary_encoding(bits: np.ndarray, epsilon):
+    """
+    the unary encoding, the default UE is SUE
+    update: 2020.02.25
+    """
+    if not isinstance(bits, np.ndarray):
+        raise Exception("Type Err: ", type(bits))
+    if not (len(np.where(a==1)[0]) == 1 and np.sum(bits) == 1):
+        raise Exception("Input Err: ", bits)
+    return symmetric_unary_encoding(bits, epsilon)
+
+
+def symmetric_unary_encoding(bits: np.ndarray, epsilon):
+    p = eps2p(epsilon / 2) / (eps2p(epsilon / 2) + 1)
+    q = 1 / (eps2p(epsilon / 2) + 1)
+    return random_response(bits, p, q)
+
+
+def optimized_unary_encoding(bits: np.ndarray, epsilon):
+
+    p = 1 / 2
+    q = 1 / (eps2p(epsilon) + 1)
+    return random_response(bits, p, q)
+
+
+def test_frequency_estimation():
+    """
+    this is a frequency estimation example
+    """
+    users = np.random.binomial(n=1, p=0.8, size=100000)
+    print(users)
+
 if __name__ == '__main__':
-    # a = np.asarray([1, 1, 1, 0, 0, 1, 0])
-    # print(random_response_pq(bits=a, probability_p=1, probability_q=0.9))
-    original_data = np.random.binomial(n=1, p=0.6, size=1000000).reshape(100000, 10)
-    print("original sum: ", np.sum(original_data, axis=0))
-    pp = 0.8
-    pq = 0.2
-    perturbed_data = np.asarray([random_response(data=original_data[i], p=pp, q=pq) for i in range(original_data.shape[0])])
-    print("estimated sum: ", random_response_reverse(data_list=perturbed_data, p=pp, q=pq))
+    test_frequency_estimation()

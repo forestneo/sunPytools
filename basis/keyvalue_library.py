@@ -128,7 +128,7 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
 
 def kv_en_f2m(kv, epsilon_k, epsilon_v, method, set_value=0):
     v = kv[1] if kv[0] == 1 else set_value
-    p_k = ldplib.random_response(data=int(kv[0]), p=ldplib.epsilon2probability(epsilon_k))
+    p_k = ldplib.random_response_old(B=int(kv[0]), p=ldplib.eps2p(epsilon_k))
     p_v = method(v, epsilon_v)
     return p_k, p_v
 
@@ -137,7 +137,7 @@ def kv_de_f2m(p_kv_list: np.ndarray, epsilon_k, set_value=0):
     if not isinstance(p_kv_list, np.ndarray):
         raise Exception("type error of p_kv_list: ", type(p_kv_list))
     f = np.average(p_kv_list[:, 0])
-    p = ldplib.epsilon2probability(epsilon=epsilon_k)
+    p = ldplib.eps2p(epsilon=epsilon_k)
     f = (p-1+f) / (2*p-1)
     m_all = np.average(p_kv_list[:, 1])
     m = (m_all - (1 - f) * set_value) / f

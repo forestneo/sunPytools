@@ -22,7 +22,7 @@ def my_test_for_random_response_pq():
     print(original_sum)
 
     p, q = 0.9, 0.1
-    perturbed_data_list = [dp.random_response(data=original_data_list[i], p=p, q=q) for i in range(len(original_data_list))]
+    perturbed_data_list = [dp.random_response_old(B=original_data_list[i], p=p, q=q) for i in range(len(original_data_list))]
     perturbed_sum = np.sum(np.asarray(perturbed_data_list), axis=0)
     print(perturbed_sum)
 

@@ -18,10 +18,10 @@ def mean_estimation_experiment():
     print("this is discretized data\n", discretized_data)
 
     mean = np.average(data)
-    print("the mean of original data is: ", mean)
+    print("the mean_solutions of original data is: ", mean)
 
     mean_d = np.average(discretized_data)
-    print("the mean of discretized data is: ", mean_d)
+    print("the mean_solutions of discretized data is: ", mean_d)
 
     epsilon = 1
 
@@ -30,7 +30,7 @@ def mean_estimation_experiment():
     est_one = dp.random_response_reverse(data_list=np.asarray(dp_data), p=dp.eps2p(epsilon))
     est_mean = est_one / len(dp_data)
 
-    print("the estimated mean is: ", est_mean)
+    print("the estimated mean_solutions is: ", est_mean)
 
 
 if __name__ == '__main__':

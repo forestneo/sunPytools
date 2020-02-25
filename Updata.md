@@ -1,31 +1,32 @@
 [toc]
 
-# 20200202
+# 20200226
 
 ## update random response
 
-old version:
+the old version:
 
 ```python
-def random_response(bits: np.ndarray, p, q=None):
+def random_response_old(bits, p, q=None):
     """
-    :param bits: bits
-    :param p: probability of 1->1
-    :param q: probability of 0->1
-    update: 2020.02.25
+    random response
+    :param bits: can be int or np.ndarray
+    :param p: Pr[1->1]
+    :param q: Pr[0->1]
+    :return: the perturbed bits
     """
-    q = 1 - p if q is None else q
+    q = 1-p if q is None else q
     if isinstance(bits, int):
         probability = p if bits == 1 else q
         return np.random.binomial(n=1, p=probability)
-
-    if not isinstance(bits, np.ndarray):
-        raise Exception("Type Err: ", type(bits))
-
-    if len(bits.shape) != 1:
-        raise Exception("Size Err: ", bits.shape)
-    flip_flags = np.where(bits == 1, np.random.binomial(1, p, len(bits)), np.random.binomial(1, 1 - q, len(bits)))
-    return coin_flip(bits, flip_flags)
+    elif isinstance(bits, np.ndarray):
+        bits = np.array(bits)
+        for i in range(len(bits)):
+            probability = p if bits[i] == 1 else q
+            bits[i] = np.random.binomial(n=1, p=probability)
+        return bits
+    else:
+        raise Exception(type(bits), bits, p, q)
 ```
 
 new version:
@@ -91,7 +92,3 @@ result
 old version =  2.055327879
 new version =  0.06653766500000025
 ```
-
-
-
-# 

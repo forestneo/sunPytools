@@ -9,6 +9,7 @@ import numpy as np
 import basis.probability_library as pl
 import time
 
+
 def eps2p(epsilon, n=2):
     return np.e ** epsilon / (np.e ** epsilon + n - 1)
 
@@ -26,26 +27,26 @@ def perturbation(value, perturbed_value, epsilon):
     return value if pl.is_probability(eps2p(epsilon)) else perturbed_value
 
 
-def random_response_old(B, p, q=None):
+def random_response_old(bits, p, q=None):
     """
     random response
-    :param B: can be int or np.ndarray
+    :param bits: can be int or np.ndarray
     :param p: Pr[1->1]
     :param q: Pr[0->1]
     :return: the perturbed bits
     """
     q = 1-p if q is None else q
-    if isinstance(B, int):
-        probability = p if B == 1 else q
+    if isinstance(bits, int):
+        probability = p if bits == 1 else q
         return np.random.binomial(n=1, p=probability)
-    elif isinstance(B, np.ndarray):
-        B = np.array(B)
-        for i in range(len(B)):
-            probability = p if B[i] == 1 else q
-            B[i] = np.random.binomial(n=1, p=probability)
-        return B
+    elif isinstance(bits, np.ndarray):
+        bits = np.array(bits)
+        for i in range(len(bits)):
+            probability = p if bits[i] == 1 else q
+            bits[i] = np.random.binomial(n=1, p=probability)
+        return bits
     else:
-        raise Exception(type(B), B, p, q)
+        raise Exception(type(bits), bits, p, q)
 
 
 def random_response_reverse(data_list, p, q=None):
@@ -131,7 +132,7 @@ def unary_encoding(bits: np.ndarray, epsilon):
     """
     if not isinstance(bits, np.ndarray):
         raise Exception("Type Err: ", type(bits))
-    if not (len(np.where(a==1)[0]) == 1 and np.sum(bits) == 1):
+    if not (len(np.where(bits==1)[0]) == 1 and np.sum(bits) == 1):
         raise Exception("Input Err: ", bits)
     return symmetric_unary_encoding(bits, epsilon)
 
@@ -153,8 +154,18 @@ def test_frequency_estimation():
     """
     this is a frequency estimation example
     """
-    users = np.random.binomial(n=1, p=0.8, size=100000)
-    print(users)
+    data = np.random.binomial(n=1, p=0.8, size=100000)
+    frequency = np.sum(data) / len(data)
+    print("frequency = ", frequency)
+
+    epsilon = 1
+    p = eps2p(epsilon)
+
+    perturbed_data = random_response(bits=data, p=p)
+    f = np.sum(perturbed_data) / len(perturbed_data)
+    estimated_frequency = (f+p-1) / (2*p - 1)
+    print("estimated frequency = ", estimated_frequency)
+
 
 if __name__ == '__main__':
     test_frequency_estimation()

@@ -5,8 +5,8 @@
 # @Software: PyCharm
 
 
-from mean import duchi
-from mean import piecewise
+from mean_solutions import duchi
+from mean_solutions import piecewise
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -67,7 +67,7 @@ def my_run_tst_2():
     data = np.clip(data, -1, 1)
 
     mean_ori = np.average(data)
-    print("original mean: ", mean_ori)
+    print("original mean_solutions: ", mean_ori)
 
     # 存放结果
     epsilon_list, error_duchi, error_piecewise = [], [], []

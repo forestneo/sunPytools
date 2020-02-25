@@ -26,7 +26,7 @@ def random_response_for_hist(user_vector, epsilon):
     :param epsilon: privacy budget
     :return: [1,0,0,1,1,...]
     """
-    return dp.random_response_old(B=user_vector, p=dp.eps2p(epsilon=epsilon / 2))
+    return dp.random_response_old(bits=user_vector, p=dp.eps2p(epsilon=epsilon / 2))
 
 
 if __name__ == '__main__':

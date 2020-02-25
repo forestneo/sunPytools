@@ -7,7 +7,7 @@
 
 import numpy as np
 import basis.local_differential_privacy_library as ldplib
-from mean.duchi import encode_duchi
+from mean_solutions.duchi import encode_duchi
 
 
 def kvlist_get_baseline(kv_list: np.ndarray, discretization=False):
@@ -105,7 +105,7 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
     This is used in the server side. The server collects all the data and then use this function to calculate f and m.
     :param p_kv_list: the encoded kv list
     :param epsilon: the privacy budget
-    :return: the estimated frequency and mean.
+    :return: the estimated frequency and mean_solutions.
     """
     if not isinstance(p_kv_list, np.ndarray):
         raise Exception("type error of p_kv_list: ", type(p_kv_list))
@@ -128,7 +128,7 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
 
 def kv_en_f2m(kv, epsilon_k, epsilon_v, method, set_value=0):
     v = kv[1] if kv[0] == 1 else set_value
-    p_k = ldplib.random_response_old(B=int(kv[0]), p=ldplib.eps2p(epsilon_k))
+    p_k = ldplib.random_response_old(bits=int(kv[0]), p=ldplib.eps2p(epsilon_k))
     p_v = method(v, epsilon_v)
     return p_k, p_v
 

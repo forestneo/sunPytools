@@ -122,7 +122,8 @@ def random_response(bits: np.ndarray, p, q=None):
     if len(bits.shape) != 1:
         raise Exception("Size Err: ", bits.shape)
     flip_flags = np.where(bits == 1, np.random.binomial(1, p, len(bits)), np.random.binomial(1, 1 - q, len(bits)))
-    return coin_flip(bits, flip_flags)
+    # return coin_flip(bits, flip_flags)
+    return (bits + flip_flags + 1) % 2
 
 
 def unary_encoding(bits: np.ndarray, epsilon):
@@ -168,4 +169,16 @@ def test_frequency_estimation():
 
 
 if __name__ == '__main__':
-    test_frequency_estimation()
+    a = np.random.binomial(1, p=0.5, size=1000)
+
+    time_s = time.perf_counter()
+    for i in range(1000):
+        random_response_old(bits=a, p=0.9)
+    time_e = time.perf_counter()
+    print("old version = ", (time_e - time_s))
+
+    time_s = time.perf_counter()
+    for i in range(1000):
+        random_response(bits=a, p=0.9)
+    time_e = time.perf_counter()
+    print("new version = ", (time_e - time_s))

@@ -32,20 +32,6 @@ def random_response_old(bits, p, q=None):
 new version:
 
 ```python
-def coin_flip(bits: np.ndarray, flip_flags: np.ndarray):
-    if not (isinstance(bits, np.ndarray) or isinstance(flip_flags, np.ndarray)):
-        raise Exception("Type Err: ", type(bits), type(flip_flags))
-    if not bits.shape == flip_flags.shape:
-        raise Exception("Length Err: ", bits.shape, flip_flags.shape)
-    # the 1 in F is not to flip
-    # B F B'
-    # 1 1 1
-    # 1 0 0
-    # 0 1 0
-    # 0 0 1
-    return (bits + flip_flags + 1) % 2
-
-
 def random_response(bits: np.ndarray, p, q=None):
     """
     :param bits: bits
@@ -64,7 +50,7 @@ def random_response(bits: np.ndarray, p, q=None):
     if len(bits.shape) != 1:
         raise Exception("Size Err: ", bits.shape)
     flip_flags = np.where(bits == 1, np.random.binomial(1, p, len(bits)), np.random.binomial(1, 1 - q, len(bits)))
-    return coin_flip(bits, flip_flags)
+    return (bits + flip_flags + 1) % 2
 ```
 
 

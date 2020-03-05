@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basis/keyvalue_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/keyvalue_library.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/basis/local_differential_privacy_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/local_differential_privacy_library.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/histogram_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_examples/histogram_estimation_example/histogram_estimation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mean_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_examples/mean_estimation_example/mean_estimation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_examples/basis/tst_basis_differential_privacy.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

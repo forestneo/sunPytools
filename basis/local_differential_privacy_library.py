@@ -41,23 +41,22 @@ def k_random_response(value, values, epsilon):
     p = np.e ** epsilon / (np.e ** epsilon + len(values) - 1)
     if np.random.random() < p:
         return value
-
     values.remove(value)
     return values[np.random.randint(low=0, high=len(values))]
 
 
-def coin_flip(bits: np.ndarray, flip_flags: np.ndarray):
-    if not (isinstance(bits, np.ndarray) or isinstance(flip_flags, np.ndarray)):
-        raise Exception("Type Err: ", type(bits), type(flip_flags))
-    if not bits.shape == flip_flags.shape:
-        raise Exception("Length Err: ", bits.shape, flip_flags.shape)
-    # the 1 in F is not to flip
-    # B F B'
-    # 1 1 1
-    # 1 0 0
-    # 0 1 0
-    # 0 0 1
-    return (bits + flip_flags + 1) % 2
+# def coin_flip(bits: np.ndarray, flip_flags: np.ndarray):
+#     if not (isinstance(bits, np.ndarray) or isinstance(flip_flags, np.ndarray)):
+#         raise Exception("Type Err: ", type(bits), type(flip_flags))
+#     if not bits.shape == flip_flags.shape:
+#         raise Exception("Length Err: ", bits.shape, flip_flags.shape)
+#     # the 1 in F is not to flip
+#     # B F B'
+#     # 1 1 1
+#     # 1 0 0
+#     # 0 1 0
+#     # 0 0 1
+#     return (bits + flip_flags + 1) % 2
 
 
 # def random_response(bits: np.ndarray, p, q=None):
@@ -81,11 +80,12 @@ def coin_flip(bits: np.ndarray, flip_flags: np.ndarray):
 #     return (bits + flip_flags + 1) % 2
 
 
-def random_response(bit_array: np.ndarray, p, q):
+def random_response(bit_array: np.ndarray, p, q=None):
     """
     :param bit_array:
     :param p: probability of 1->1
     :param q: probability of 0->1
+    update: 2020.03.06
     :return: 
     """
     q = 1-p if q is None else q
@@ -118,5 +118,6 @@ def optimized_unary_encoding(bit_array: np.ndarray, epsilon):
 
 
 if __name__ == '__main__':
-    pass
+    a = 0
+    print(random_response(a, 0, 0))
 

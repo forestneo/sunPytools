@@ -12,7 +12,7 @@ from mean_solutions.duchi import encode_duchi
 
 def kvlist_get_baseline(kv_list: np.ndarray, discretization=False):
     if not isinstance(discretization, bool):
-        raise Exception("type error")
+        raise Exception("Input type error: ", type(discretization))
     f = np.average(kv_list[:, 0])
 
     value_list = []

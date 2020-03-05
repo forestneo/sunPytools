@@ -25,8 +25,7 @@ function list:
 | unary_encoding(bits: np.ndarray, epsilon)                        |    UE                           |
 | symmetric_unary_encoding(bits: np.ndarray, epsilon)                         |        SUE                       |
 | optimized_unary_encoding(bits: np.ndarray, epsilon)                                       | OUE                              |
-                             |
-
+                          
 ## 函数介绍
 
 ### eps2p(epsilon, n=2)
@@ -99,6 +98,11 @@ def random_response(bits: np.ndarray, p, q=None):
 
 # Key-Value library
 
+| 基本名称                                | 含义                         |
+| --------------------------------------- | ----------------------------- |
+| kv_                     | KV pair                      |
+| kvs |    a list of kv                     |
+| kvt | kv_table: a list of kv list|
 
 
 # mean_solutions

@@ -118,6 +118,4 @@ def optimized_unary_encoding(bit_array: np.ndarray, epsilon):
 
 
 if __name__ == '__main__':
-    a = 0
-    print(random_response(a, 0, 0))
-
+    pass

@@ -40,8 +40,8 @@ if __name__ == '__main__':
     # 得到原始数据的直方图
     original_hist = np.sum(data_list, axis=0)
     print("this is original hist: \n", original_hist)
-    guessed_hist = original_hist * (2*p-1) + n * (1-p)
-    print("this is guessed hist: \n", guessed_hist)
+    # guessed_hist = original_hist * (2*p-1) + n * (1-p)
+    # print("this is guessed hist: \n", guessed_hist)
 
     # aggregator收集并处理数据
     perturbed_data = np.asarray([random_response_for_hist(user, epsilon) for user in data_list])

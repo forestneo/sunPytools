@@ -20,7 +20,7 @@ def run(data):
 
     epsilon = 1
     p = ldplib.eps2p(epsilon)
-    perturbed_data = ldplib.random_response(bits=data, p=p)
+    perturbed_data = ldplib.random_response(bit_array=data, p=p)
     f = np.sum(perturbed_data) / len(perturbed_data)
     estimated_frequency = (f + p - 1) / (2 * p - 1)
     print("estimated frequency = ", estimated_frequency)

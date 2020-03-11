@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basis/local_differential_privacy_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/local_differential_privacy_library.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_examples/frequency_estimation_example/run_frequency_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_examples/frequency_estimation_example/run_frequency_estimation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_examples/histogram_estimation_example/histogram_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_examples/histogram_estimation_example/histogram_estimation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,7 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.histogram_estimation">
+  <component name="RunManager" selected="Python.mean_estimation">
     <configuration name="basic_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -168,11 +168,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.mean_estimation" />
         <item itemvalue="Python.histogram_estimation" />
+        <item itemvalue="Python.run_frequency_estimation" />
         <item itemvalue="Python.tst_python" />
         <item itemvalue="Python.basic_differential_privacy" />
-        <item itemvalue="Python.mean_estimation" />
-        <item itemvalue="Python.run_frequency_estimation" />
       </list>
     </recent_temporary>
   </component>

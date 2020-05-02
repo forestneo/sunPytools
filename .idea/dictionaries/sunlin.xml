@@ -1,11 +1,14 @@
 <component name="ProjectDictionaryState">
   <dictionary name="sunlin">
     <words>
+      <w>bisample</w>
       <w>discretize</w>
       <w>forestneo</w>
       <w>keyvalue</w>
       <w>kvlist</w>
+      <w>kvtable</w>
       <w>ldplib</w>
+      <w>onehot</w>
       <w>pirvkv</w>
       <w>privkv</w>
     </words>

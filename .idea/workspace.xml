@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/sunlin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/sunlin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_examples/frequency_estimation_example/run_frequency_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_examples/frequency_estimation_example/run_frequency_estimation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_examples/histogram_estimation_example/histogram_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_examples/histogram_estimation_example/histogram_estimation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basis/keyvalue_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/keyvalue_library.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,10 +31,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_examples/kv_example/data" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test_examples/kv_example/data" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test_examples/mean_estimation_example" />
       <recent name="$PROJECT_DIR$/test_examples/histogram_estimation_example" />
@@ -53,8 +56,50 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.mean_estimation">
-    <configuration name="basic_differential_privacy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.missing_data_library">
+    <configuration name="compare_different_mechanism" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sunDP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_examples/kv_example" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_examples/kv_example/compare_different_mechanism.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="data_processor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sunDP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_examples/kv_example/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_examples/kv_example/data/data_processor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="keyvalue_library" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -66,28 +111,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/local_differential_privacy_library.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="histogram_estimation" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="sunDP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_examples/histogram_estimation_example/histogram_estimation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/keyvalue_library.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,7 +141,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="run_frequency_estimation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="missing_data_library" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -125,32 +149,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_examples/frequency_estimation_example" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/basis" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_examples/frequency_estimation_example/run_frequency_estimation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="tst_python" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="sunDP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_examples/tst_python.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/missing_data_library.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -160,19 +163,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.basic_differential_privacy" />
       <item itemvalue="Python.mean_estimation" />
-      <item itemvalue="Python.histogram_estimation" />
-      <item itemvalue="Python.run_frequency_estimation" />
-      <item itemvalue="Python.tst_python" />
+      <item itemvalue="Python.data_processor" />
+      <item itemvalue="Python.compare_different_mechanism" />
+      <item itemvalue="Python.keyvalue_library" />
+      <item itemvalue="Python.missing_data_library" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.missing_data_library" />
+        <item itemvalue="Python.keyvalue_library" />
+        <item itemvalue="Python.compare_different_mechanism" />
+        <item itemvalue="Python.data_processor" />
         <item itemvalue="Python.mean_estimation" />
-        <item itemvalue="Python.histogram_estimation" />
-        <item itemvalue="Python.run_frequency_estimation" />
-        <item itemvalue="Python.tst_python" />
-        <item itemvalue="Python.basic_differential_privacy" />
       </list>
     </recent_temporary>
   </component>

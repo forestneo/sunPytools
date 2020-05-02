@@ -4,10 +4,8 @@
 # @Email   : dr.forestneo@gmail.com
 # @Software: PyCharm
 
-
 import numpy as np
 import basis.local_differential_privacy_library as ldplib
-from mean_solutions.duchi import encode_duchi
 
 
 def kvlist_get_baseline(kv_list: np.ndarray, discretization=False):
@@ -86,6 +84,30 @@ def kv_de_privkv(p_kv_list: np.ndarray, epsilon_k, epsilon_v):
     return f, m
 
 
+def kv_en_onehot(kv, epsilon):
+    """
+    encode a kv into [a,b,c], where:
+        a=1 represents if the k == 0
+        b represents if v == -1
+        c represents if v == 1
+    """
+    k, v = int(kv[0]), kv[1]
+    onehot = np.zeros([3])
+    if k == 0:
+        onehot[0] = 1
+    else:
+        d_v = ldplib.discretization(v, -1, 1)
+        if d_v == -1:
+            onehot[1] = 1
+        else:
+            onehot[2] = 1
+    return ldplib.random_response(bit_array=onehot, p=ldplib.eps2p(epsilon/2))
+
+
+def kv_de_onehot(p_kv_list, epsilon):
+    pass
+
+
 def kv_en_state_encoding(kv, epsilon):
     """
     The unary encoding, also known as k-random response, is used in user side. It works as follows
@@ -126,22 +148,46 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
     return f, m
 
 
-def kv_en_f2m(kv, epsilon_k, epsilon_v, method, set_value=0):
-    v = kv[1] if kv[0] == 1 else set_value
-    p_k = ldplib.random_response_old(bits=int(kv[0]), p=ldplib.eps2p(epsilon_k))
-    p_v = method(v, epsilon_v)
-    return p_k, p_v
+def kv_en_bisample(kv, epsilon):
+    k, v = kv[0], kv[1]
+    if k == 0:
+        return np.random.binomial(1, 0.5), np.random.binomial(1, 1/(np.e**epsilon+1))
+    direction = np.random.binomial(1, 0.5)
+    if direction == 0: # negative sampling
+        probability = (1 - np.e ** epsilon) / (1 + np.e ** epsilon) * v / 2 + 0.5
+    else: # positive sampling
+        probability = (np.e ** epsilon - 1) / (np.e ** epsilon + 1) * v / 2 + 0.5
+    return direction, np.random.binomial(1, probability)
 
 
-def kv_de_f2m(p_kv_list: np.ndarray, epsilon_k, set_value=0):
-    if not isinstance(p_kv_list, np.ndarray):
-        raise Exception("type error of p_kv_list: ", type(p_kv_list))
-    f = np.average(p_kv_list[:, 0])
-    p = ldplib.eps2p(epsilon=epsilon_k)
-    f = (p-1+f) / (2*p-1)
-    m_all = np.average(p_kv_list[:, 1])
-    m = (m_all - (1 - f) * set_value) / f
+def kv_de_bisample(p_kv_list: np.ndarray, epsilon):
+    pos_values = p_kv_list[p_kv_list[:, 0] == 1]
+    neg_values = p_kv_list[p_kv_list[:, 0] == 0]
+    f_pos = np.average(pos_values[:, 1])
+    f_neg = np.average(neg_values[:, 1])
+
+    p = ldplib.eps2p(epsilon)
+
+    f = (2*p - 2 + f_pos + f_neg) / (2*p - 1)
+    m = (f_pos - f_neg) / (f_pos + f_neg + 2*p - 2)
     return f, m
+
+# def kv_en_f2m(kv, epsilon_k, epsilon_v, method, set_value=0):
+#     v = kv[1] if kv[0] == 1 else set_value
+#     p_k = ldplib.random_response_old(bits=int(kv[0]), p=ldplib.eps2p(epsilon_k))
+#     p_v = method(v, epsilon_v)
+#     return p_k, p_v
+#
+#
+# def kv_de_f2m(p_kv_list: np.ndarray, epsilon_k, set_value=0):
+#     if not isinstance(p_kv_list, np.ndarray):
+#         raise Exception("type error of p_kv_list: ", type(p_kv_list))
+#     f = np.average(p_kv_list[:, 0])
+#     p = ldplib.eps2p(epsilon=epsilon_k)
+#     f = (p-1+f) / (2*p-1)
+#     m_all = np.average(p_kv_list[:, 1])
+#     m = (m_all - (1 - f) * set_value) / f
+#     return f, m
 
 
 def my_run_tst():
@@ -149,18 +195,18 @@ def my_run_tst():
     np.random.seed(10)
 
     # generate 100000 kv pairs with f=0.7 and m=0.3
-    kv_list = [[np.random.binomial(1, 0.7), np.clip(a=np.random.normal(loc=0.3, scale=0.2), a_min=-1, a_max=1)] for _ in
-               range(100000)]
+    kv_list = [[np.random.binomial(1, 0.7), np.clip(a=np.random.normal(loc=0.3, scale=0.3), a_min=-1, a_max=1)] for _ in
+               range(500000)]
     kv_list = np.asarray(kv_list)
     kv_list[:, 1] = kv_list[:, 1] * kv_list[:, 0]
     f_base, m_base = kvlist_get_baseline(kv_list=np.asarray(kv_list))
     print("this is the baseline f=%.4f, m=%.4f" % (f_base, m_base))
 
-    epsilon = 2
+    epsilon = 0.1
 
     # the PrivKV method
     pirvkv_kv_list = [kv_en_privkv(kv, epsilon1=epsilon/2, epsilon2=epsilon/2) for kv in kv_list]
-    f_privkv, m_privkv = kv_de_privkv(p_kv_list=np.asarray(pirvkv_kv_list), epsilon_k=epsilon/2, epsilon_v=epsilon/2)
+    f_privkv, m_privkv = kv_de_privkv(p_kv_list=np.asarray(pirvkv_kv_list), epsilon_k=epsilon / 2, epsilon_v=epsilon / 2)
     print("this is the privkv f=%.4f, m=%.4f" % (f_privkv, m_privkv))
 
     # the StateEncoding method
@@ -168,10 +214,9 @@ def my_run_tst():
     f_se, m_se = kv_de_state_encoding(p_kv_list=np.asarray(se_kv_list), epsilon=epsilon)
     print("this is the se f=%.4f, m=%.4f" % (f_se, m_se))
 
-    # the f2m-duchi method
-    f2m_kv_list = [kv_en_f2m(kv=kv, epsilon_k=epsilon/2, epsilon_v=epsilon/2, method=encode_duchi) for kv in kv_list]
-    f_f2m, m_f2m = kv_de_f2m(p_kv_list=np.asarray(f2m_kv_list), epsilon_k=epsilon/2)
-    print("this is the f2m f=%.4f, m=%.4f" % (f_f2m, m_f2m))
+    bisample_kv_list = [kv_en_bisample(kv,epsilon) for kv in kv_list]
+    f_bisample, m_bisample = kv_de_bisample(p_kv_list=np.asarray(bisample_kv_list), epsilon=epsilon)
+    print("this is the bi f=%.4f, m=%.4f" % (f_bisample, m_bisample))
 
 
 if __name__ == '__main__':

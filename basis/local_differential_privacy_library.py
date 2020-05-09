@@ -6,7 +6,6 @@
 
 #
 import numpy as np
-import basis.probability_library as pl
 
 
 def eps2p(epsilon, n=2):
@@ -45,39 +44,15 @@ def k_random_response(value, values, epsilon):
     return values[np.random.randint(low=0, high=len(values))]
 
 
-# def coin_flip(bits: np.ndarray, flip_flags: np.ndarray):
-#     if not (isinstance(bits, np.ndarray) or isinstance(flip_flags, np.ndarray)):
-#         raise Exception("Type Err: ", type(bits), type(flip_flags))
-#     if not bits.shape == flip_flags.shape:
-#         raise Exception("Length Err: ", bits.shape, flip_flags.shape)
-#     # the 1 in F is not to flip
-#     # B F B'
-#     # 1 1 1
-#     # 1 0 0
-#     # 0 1 0
-#     # 0 0 1
-#     return (bits + flip_flags + 1) % 2
-
-
-# def random_response(bits: np.ndarray, p, q=None):
-#     """
-#     :param bits: bits
-#     :param p: probability of 1->1
-#     :param q: probability of 0->1
-#     update: 2020.02.25
-#     """
-#     q = 1 - p if q is None else q
-#     if isinstance(bits, int):
-#         probability = p if bits == 1 else q
-#         return np.random.binomial(n=1, p=probability)
-#
-#     if not isinstance(bits, np.ndarray):
-#         raise Exception("Type Err: ", type(bits))
-#
-#     if len(bits.shape) != 1:
-#         raise Exception("Size Err: ", bits.shape)
-#     flip_flags = np.where(bits == 1, np.random.binomial(1, p, len(bits)), np.random.binomial(1, 1 - q, len(bits)))
-#     return (bits + flip_flags + 1) % 2
+def k_random_response_new(item, k, epsilon):
+    if not item < k:
+        raise Exception("the input domain is wrong, item = %d, k = %d." % (item, k))
+    p_l = 1 / (np.e ** epsilon + k - 1)
+    p_h = np.e ** epsilon / (np.e ** epsilon + k - 1)
+    respond_probability = np.full(shape=k, fill_value=p_l)
+    respond_probability[item] = p_h
+    perturbed_item = np.random.choice(a=range(k), p=respond_probability)
+    return perturbed_item
 
 
 def random_response(bit_array: np.ndarray, p, q=None):

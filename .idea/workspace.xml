@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/sunlin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/sunlin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basis/local_differential_privacy_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/basis/local_differential_privacy_library.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basis/probability_library.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heavy_hitters/compare_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/compare_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heavy_hitters/hadamard_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/hadamard_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heavy_hitters/k_random_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/k_random_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heavy_hitters/rappor.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/rappor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.algorithms">
+  <component name="RunManager" selected="Python.hadamard_response">
     <configuration name="algorithms" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -79,7 +82,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="compare_methods" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="compare_methods" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -92,6 +95,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/heavy_hitters/compare_methods.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="hadamard_response" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sunDP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/heavy_hitters" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/heavy_hitters/hadamard_response.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -113,27 +137,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/heavy_hitters/k_random_response.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="keyvalue_library" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
-      <module name="sunDP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/basis" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basis/keyvalue_library.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,19 +167,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.keyvalue_library" />
       <item itemvalue="Python.missing_data_library" />
       <item itemvalue="Python.algorithms" />
       <item itemvalue="Python.compare_methods" />
       <item itemvalue="Python.k_random_response" />
+      <item itemvalue="Python.hadamard_response" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.hadamard_response" />
+        <item itemvalue="Python.compare_methods" />
         <item itemvalue="Python.algorithms" />
         <item itemvalue="Python.k_random_response" />
-        <item itemvalue="Python.compare_methods" />
         <item itemvalue="Python.missing_data_library" />
-        <item itemvalue="Python.keyvalue_library" />
       </list>
     </recent_temporary>
   </component>

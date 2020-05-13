@@ -33,7 +33,7 @@ class kRR:
         return estimate_counts
 
 
-if __name__ == '__main__':
+def run_example():
     bucket_size = 5
     epsilon = 1
 
@@ -47,6 +47,10 @@ if __name__ == '__main__':
     private_bucket_list = [krr.encode_item(item) for item in bucket_list]
     estimate_hist = krr.decode_histogram(private_bucket_list)
     print("this is estimate_hist", estimate_hist)
+
+
+if __name__ == '__main__':
+    run_example()
 
 
 

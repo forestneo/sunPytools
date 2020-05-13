@@ -9,6 +9,13 @@
           <option value="N801" />
         </list>
       </option>
+      <option name="ignoredBaseClasses">
+        <list>
+          <option value="unittest.TestCase" />
+          <option value="unittest.case.TestCase" />
+          <option value="heavy_hitters.hadamard_response.HR" />
+        </list>
+      </option>
     </inspection_tool>
   </profile>
 </component>

@@ -31,19 +31,6 @@ class HR:
             b = np.hstack([self.hadamard_matrix, -self.hadamard_matrix])
             self.hadamard_matrix = np.vstack([a, b])
 
-        # create hadamard matrix
-        # self.hadamard_matrix = np.ones((self.private_bucket_size, self.private_bucket_size), dtype=np.float32)
-        # for i in range(self.private_bucket_size):
-        #     for j in range(self.private_bucket_size):
-        #         temp = i & j
-        #         result = 0
-        #         for step in range(4):
-        #             result += ((temp >> step) & 1)
-        #         if 0 == result % 2:
-        #             self.hadamard_matrix[i][j] = 1
-        #         else:
-        #             self.hadamard_matrix[i][j] = -1
-
         # to store the output items together with corresponding probability, the shape is k*K
         self.probability_matrix = np.copy(self.hadamard_matrix)[1:, :]
         self.probability_matrix = np.where(self.probability_matrix == 1, self.ph, self.pl)

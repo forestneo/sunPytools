@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/sunlin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/sunlin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/heavy_hitters/compare_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/compare_methods.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/heavy_hitters/hadamard_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/hadamard_response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heavy_hitters/k_random_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/k_random_response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heavy_hitters/rappor.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/rappor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -48,7 +48,7 @@ def run_example():
         'bucket_size': 100,
         'epsilon': 1,
         'n': 1000000,
-        'method': 'l1'
+        'error_method': 'l1'
     }
 
     bucket_list, true_hist = generate_bucket(n=config['n'], bucket_size=config['bucket_size'], distribution_name='uniform')
@@ -59,7 +59,7 @@ def run_example():
     hr = HR.HR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
     hr_private_bucket_list = [hr.encode_item(bucket) for bucket in bucket_list]
     hr_histogram = hr.decode_histogram(private_bucket_list=hr_private_bucket_list)
-    hr_error = get_err(true_hist, hr_histogram, config['method'])
+    hr_error = get_err(true_hist, hr_histogram, config['error_method'])
     # print("HR resul", hr_histogram)
     print("HR error", hr_error)
 
@@ -67,7 +67,7 @@ def run_example():
     rappor = RAPPOR.RAPPOR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
     rappor_private_bucket_list = [rappor.encode_item(bucket) for bucket in bucket_list]
     rappor_histogram = rappor.decode_histogram(private_bucket_list=rappor_private_bucket_list)
-    rappor_error = get_err(true_hist, rappor_histogram, config['method'])
+    rappor_error = get_err(true_hist, rappor_histogram, config['error_method'])
     # print("RAPPOR resul", rappor_histogram)
     print("RAPPOR error", rappor_error)
 
@@ -75,7 +75,7 @@ def run_example():
     krr = KRR.kRR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
     krr_private_bucket_list = [krr.encode_item(item) for item in bucket_list]
     krr_histogram = krr.decode_histogram(krr_private_bucket_list)
-    krr_error = get_err(true_hist, krr_histogram, config['method'])
+    krr_error = get_err(true_hist, krr_histogram, config['error_method'])
     # print("krr result  ", krr_histogram)
     print("krr error   ", krr_error)
     print(config)

@@ -22,7 +22,10 @@ def discretization(value, lower=0, upper=1):
 
 
 def perturbation(value, perturbed_value, epsilon):
-    return value if pl.is_probability(eps2p(epsilon)) else perturbed_value
+    rnd = np.random.random()
+    if rnd < eps2p(epsilon):
+        return value
+    return perturbed_value
 
 
 def k_random_response(value, values, epsilon):

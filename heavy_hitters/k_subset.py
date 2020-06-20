@@ -18,7 +18,6 @@ class kRR:
         self.k = k
 
 
-
     def encode_item(self, bucket):
         pass
 

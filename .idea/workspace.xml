@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heavy_hitters/k_subset.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/k_subset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean_solutions/compare_different_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean_solutions/compare_different_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean_solutions/duchi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean_solutions/duchi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mean_solutions/piecewise.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean_solutions/piecewise.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

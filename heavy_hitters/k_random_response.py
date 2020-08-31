@@ -38,7 +38,6 @@ def run_example():
     epsilon = 1
 
     print("==========>>>>> in KRR")
-
     krr = kRR(bucket_size=bucket_size, epsilon=epsilon)
     bucket_list, true_hist = example.generate_bucket(n=10000, bucket_size=bucket_size, distribution_name='uniform')
     print("this is buckets: ", bucket_list)

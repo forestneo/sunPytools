@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d9dbf59b-ca3f-4d6a-802a-62c8d84cc06a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mean_solutions/duchi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mean_solutions/duchi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Updata.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heavy_hitters/compare_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/compare_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heavy_hitters/hadamard_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/hadamard_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heavy_hitters/rappor.py" beforeDir="false" afterPath="$PROJECT_DIR$/heavy_hitters/rappor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,10 +63,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -75,7 +85,7 @@
       <recent name="$PROJECT_DIR$/basis" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.k_random_response">
+  <component name="RunManager" selected="Python.succint_histogram">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="sunDP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,28 +102,6 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="algorithms" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="sunDP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/heavy_hitters" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/heavy_hitters/rappor.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -208,20 +196,42 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="succint_histogram" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+      <module name="sunDP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/heavy_hitters" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/heavy_hitters/succint_histogram.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.algorithms" />
       <item itemvalue="Python.compare_methods" />
       <item itemvalue="Python.k_random_response" />
       <item itemvalue="Python.hadamard_response" />
       <item itemvalue="Python.compare_different_methods" />
+      <item itemvalue="Python.succint_histogram" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.succint_histogram" />
+        <item itemvalue="Python.compare_methods" />
+        <item itemvalue="Python.hadamard_response" />
         <item itemvalue="Python.k_random_response" />
         <item itemvalue="Python.compare_different_methods" />
-        <item itemvalue="Python.hadamard_response" />
-        <item itemvalue="Python.compare_methods" />
-        <item itemvalue="Python.algorithms" />
       </list>
     </recent_temporary>
   </component>
@@ -237,7 +247,11 @@
       <option name="presentableId" value="Default" />
       <updated>1559278081472</updated>
       <workItem from="1598839654385" duration="939000" />
-      <workItem from="1598840727553" duration="519000" />
+      <workItem from="1598840727553" duration="951000" />
+      <workItem from="1598921761850" duration="18193000" />
+      <workItem from="1599006918368" duration="10433000" />
+      <workItem from="1599094470020" duration="10549000" />
+      <workItem from="1599121229687" duration="1334000" />
     </task>
     <servers />
   </component>
@@ -257,32 +271,52 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom" timestamp="1598841205266">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599011990322">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1598841205266" />
-    <state width="1398" height="231" key="GridCell.Tab.0.center" timestamp="1598841205265">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599011990322" />
+    <state x="1148" y="149" key="#succint_histogram" timestamp="1598922238353">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1598841205265" />
-    <state width="1398" height="231" key="GridCell.Tab.0.left" timestamp="1598841205264">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="1148" y="149" key="#succint_histogram/0.0.1920.1040@0.0.1920.1040" timestamp="1598922238353" />
+    <state width="1877" height="244" key="GridCell.Tab.0.bottom" timestamp="1599120123888">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1598841205264" />
-    <state width="1398" height="231" key="GridCell.Tab.0.right" timestamp="1598841205265">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1877" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599120123888" />
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1598841679949" />
+    <state width="1877" height="244" key="GridCell.Tab.0.center" timestamp="1599120123888">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1598841205265" />
-    <state x="221" y="100" key="SettingsEditor" timestamp="1598841204519">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1877" height="244" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599120123888" />
+    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1598841679948" />
+    <state width="1877" height="244" key="GridCell.Tab.0.left" timestamp="1599120123888">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="244" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599120123888" />
+    <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1598841679947" />
+    <state width="1877" height="244" key="GridCell.Tab.0.right" timestamp="1599120123888">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="244" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599120123888" />
+    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1598841679948" />
+    <state x="295" y="91" key="SettingsEditor" timestamp="1598921808662">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="295" y="91" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1598921808662" />
     <state x="221" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1598841204519" />
     <state x="421" y="50" width="598" height="822" key="find.popup" timestamp="1598841137403">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="421" y="50" width="598" height="822" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1598841137403" />
+    <state x="946" y="338" width="672" height="678" key="search.everywhere.popup" timestamp="1599007339357">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="946" y="338" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599007339357" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/sunDP$k_random_response.coverage" NAME="k_random_response Coverage Results" MODIFIED="1598841205252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/heavy_hitters" />
+    <SUITE FILE_PATH="coverage/sunDP$hadamard_response.coverage" NAME="hadamard_response Coverage Results" MODIFIED="1599117945685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/heavy_hitters" />
+    <SUITE FILE_PATH="coverage/sunDP$succint_histogram.coverage" NAME="succint_histogram Coverage Results" MODIFIED="1599028692621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/heavy_hitters" />
+    <SUITE FILE_PATH="coverage/sunDP$k_random_response.coverage" NAME="k_random_response Coverage Results" MODIFIED="1598921962752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/heavy_hitters" />
+    <SUITE FILE_PATH="coverage/sunDP$compare_methods.coverage" NAME="compare_methods Coverage Results" MODIFIED="1599118964539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/heavy_hitters" />
   </component>
 </project>

@@ -22,20 +22,21 @@ class HR:
         self.s = int(self.K / 2)
 
         # the probability
-        self.ph = np.e ** epsilon / (self.s * np.e ** epsilon + self.K - self.s)
-        self.pl = 1.0 / (self.s * np.e ** epsilon + self.K - self.s)
+        self.__ph = np.e ** epsilon / (self.s * np.e ** epsilon + self.K - self.s)
+        self.__pl = 1.0 / (self.s * np.e ** epsilon + self.K - self.s)
 
-        self.hadamard_matrix = np.array([1])
+        # Generating the hadamard matrix
+        self.__hadamard_matrix = np.array([1])
         for i in range(int(np.log2(self.K))):
-            a = np.hstack([self.hadamard_matrix, self.hadamard_matrix])
-            b = np.hstack([self.hadamard_matrix, -self.hadamard_matrix])
-            self.hadamard_matrix = np.vstack([a, b])
+            a = np.hstack([self.__hadamard_matrix, self.__hadamard_matrix])
+            b = np.hstack([self.__hadamard_matrix, -self.__hadamard_matrix])
+            self.__hadamard_matrix = np.vstack([a, b])
 
         # to store the output items together with corresponding probability, the shape is k*K
-        self.probability_matrix = np.copy(self.hadamard_matrix)[1:, :]
-        self.probability_matrix = np.where(self.probability_matrix == 1, self.ph, self.pl)
+        self.probability_matrix = np.copy(self.__hadamard_matrix)[1:, :]
+        self.probability_matrix = np.where(self.probability_matrix == 1, self.__ph, self.__pl)
 
-    def encode_item(self, bucket):
+    def user_encode(self, bucket):
         if bucket >= self.bucket_size:
             raise Exception("the input domain is wrong, bucket = %d, k = %d" % (bucket, self.bucket_size))
         a = range(self.K)
@@ -44,7 +45,7 @@ class HR:
         return encode_item
 
     def get_Cx(self, bucket):
-        hadamard_line = self.hadamard_matrix[bucket+1]
+        hadamard_line = self.__hadamard_matrix[bucket + 1]
         Cx = np.where(hadamard_line == 1)
         return Cx[0]
 
@@ -53,7 +54,7 @@ class HR:
         hist = np.zeros(shape=self.bucket_size)
         for i in range(self.bucket_size):
             count = 0
-            cx = np.where(self.hadamard_matrix[i+1] == 1)[0]
+            cx = np.where(self.__hadamard_matrix[i + 1] == 1)[0]
             for index in cx:
                 count += private_hist[index]
             hist[i] = count
@@ -76,7 +77,7 @@ def run_example():
     print("this is true hist: ", true_hist)
 
     print("==========>>>>> in KRR")
-    private_bucket_list = [hr.encode_item(item) for item in bucket_list]
+    private_bucket_list = [hr.user_encode(item) for item in bucket_list]
     print("this is private buckets: ", private_bucket_list)
     estimate_hist = hr.decode_histogram(private_bucket_list)
     print("this is estimate_hist", estimate_hist)

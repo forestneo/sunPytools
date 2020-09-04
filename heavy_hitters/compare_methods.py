@@ -11,23 +11,34 @@ import numpy as np
 import heavy_hitters.rappor as RAPPOR
 import heavy_hitters.k_random_response as KRR
 import heavy_hitters.hadamard_response as HR
+import matplotlib.pyplot as plt
 
 
-def generate_distribution(distribution_name, length):
+def generate_distribution(distribution_name, domain):
     if distribution_name == "uniform":
-        return np.full(shape=length, fill_value=1.0/length)
+        return np.full(shape=domain, fill_value=1.0 / domain)
     elif distribution_name == "gauss":
         prob_list = [0]
         return prob_list
+    elif distribution_name == "exp":
+        lmda = 2
+        prob_list = np.array([lmda * np.e**(-lmda * x) for x in np.arange(1, domain+1)/10])
+        return prob_list / sum(prob_list)
     else:
         raise Exception("the distribution is not contained")
 
 
 def generate_bucket(n, bucket_size, distribution_name):
-    distribution = generate_distribution(distribution_name, length=bucket_size)
+    distribution = generate_distribution(distribution_name, domain=bucket_size)
     bucket_list = np.random.choice(range(bucket_size), n, p=distribution)
     hist = np.histogram(bucket_list, bins=range(bucket_size+1))
     return bucket_list, hist[0]
+
+
+def draw_distribution(distribution):
+    index = np.arange(1, len(distribution)+1)
+    plt.bar(index, distribution)
+    plt.show()
 
 
 def get_err(true_hist, estimate_hist, method='max'):
@@ -57,7 +68,7 @@ def run_example():
 
     print("\n==========>>>>> in HR")
     hr = HR.HR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
-    hr_private_bucket_list = [hr.encode_item(bucket) for bucket in bucket_list]
+    hr_private_bucket_list = [hr.user_encode(bucket) for bucket in bucket_list]
     hr_histogram = hr.decode_histogram(private_bucket_list=hr_private_bucket_list)
     hr_error = get_err(true_hist, hr_histogram, config['error_method'])
     # print("HR resul", hr_histogram)
@@ -65,7 +76,7 @@ def run_example():
 
     print("\n==========>>>>> in RAPPOR")
     rappor = RAPPOR.RAPPOR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
-    rappor_private_bucket_list = [rappor.encode_item(bucket) for bucket in bucket_list]
+    rappor_private_bucket_list = [rappor.user_encode(bucket) for bucket in bucket_list]
     rappor_histogram = rappor.decode_histogram(private_bucket_list=rappor_private_bucket_list)
     rappor_error = get_err(true_hist, rappor_histogram, config['error_method'])
     # print("RAPPOR resul", rappor_histogram)
@@ -82,4 +93,7 @@ def run_example():
 
 
 if __name__ == '__main__':
-    run_example()
+    # run_example()
+    dist = generate_distribution(distribution_name='exp', domain=100)
+    print(dist)
+    draw_distribution(dist)

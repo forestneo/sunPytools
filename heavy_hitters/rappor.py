@@ -18,14 +18,15 @@ class RAPPOR:
         # the size of buckets
         self.bucket_size = bucket_size
 
-    def encode_item(self, bucket):
+    def user_encode(self, bucket):
         if bucket >= self.bucket_size:
-            raise Exception("the input domain is wrong, bucket = %d, k = %d" % (bucket, self.bucket_size))
+            raise Exception("Error, the input domain is wrong, bucket = %d, k = %d" % (bucket, self.bucket_size))
         # onehot encoding
         private_bucket = np.zeros(self.bucket_size)
         private_bucket[bucket] = 1
         # random response
-        return np.where(private_bucket == 1, np.random.binomial(1, self.p, self.bucket_size), np.random.binomial(1, 1 - self.p, self.bucket_size))
+        return np.where(private_bucket == 1, np.random.binomial(1, self.p, self.bucket_size),
+                        np.random.binomial(1, 1 - self.p, self.bucket_size))
 
     def decode_histogram(self, private_bucket_list):
         private_bucket_list = np.asarray(np.asarray(private_bucket_list))
@@ -40,13 +41,12 @@ def run_example():
     epsilon = 1
 
     print("==========>>>>> in RAPPOR")
-
     rappor = RAPPOR(bucket_size=bucket_size, epsilon=epsilon)
     bucket_list, true_hist = example.generate_bucket(n=10000, bucket_size=bucket_size, distribution_name='uniform')
     print("this is buckets: ", bucket_list)
     print("this is true hist: ", true_hist)
 
-    private_bucket_list = [rappor.encode_item(item) for item in bucket_list]
+    private_bucket_list = [rappor.user_encode(item) for item in bucket_list]
     estimate_hist = rappor.decode_histogram(private_bucket_list)
     print("this is estimate_hist", estimate_hist)
 

@@ -3,7 +3,7 @@
 # @Author  : ForestNeo
 # @Site    : forestneo.com
 # @Email   : dr.forestneo@gmail.com
-# @File    : k_random_response.py
+# @File    : k_randomized_response.py
 # @Software: PyCharm
 
 
@@ -21,12 +21,12 @@ class kRR:
         self.p_h = np.e ** epsilon / (np.e ** epsilon + self.k - 1)
         self.p_l = 1 / (np.e ** epsilon + self.k - 1)
 
-    def encode_item(self, bucket):
+    def user_encode(self, bucket):
         if bucket >= self.bucket_size:
             raise Exception("the input domain is wrong, bucket = %d, k = %d" % (bucket, self.bucket_size))
         return ldplib.k_random_response_new(item=bucket, k=self.k, epsilon=self.epsilon)
 
-    def decode_histogram(self, private_bucket_list):
+    def aggregate_histogram(self, private_bucket_list):
         private_hist = np.histogram(private_bucket_list, range(self.k+1))[0]
         n = len(private_bucket_list)
         estimate_counts = (private_hist - n * self.p_l) / (self.p_h - self.p_l)
@@ -43,8 +43,8 @@ def run_example():
     print("this is buckets: ", bucket_list)
     print("this is true hist: ", true_hist)
 
-    private_bucket_list = [krr.encode_item(item) for item in bucket_list]
-    estimate_hist = krr.decode_histogram(private_bucket_list)
+    private_bucket_list = [krr.user_encode(item) for item in bucket_list]
+    estimate_hist = krr.aggregate_histogram(private_bucket_list)
     print("this is estimate_hist", estimate_hist)
 
 

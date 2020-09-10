@@ -24,11 +24,11 @@ class RAPPOR:
         # onehot encoding
         private_bucket = np.zeros(self.bucket_size)
         private_bucket[bucket] = 1
-        # random response
+        # randomized response
         return np.where(private_bucket == 1, np.random.binomial(1, self.p, self.bucket_size),
                         np.random.binomial(1, 1 - self.p, self.bucket_size))
 
-    def decode_histogram(self, private_bucket_list):
+    def aggregate_histogram(self, private_bucket_list):
         private_bucket_list = np.asarray(np.asarray(private_bucket_list))
         item_count = private_bucket_list.shape[0]
         private_counts = np.sum(private_bucket_list, axis=0)
@@ -47,7 +47,7 @@ def run_example():
     print("this is true hist: ", true_hist)
 
     private_bucket_list = [rappor.user_encode(item) for item in bucket_list]
-    estimate_hist = rappor.decode_histogram(private_bucket_list)
+    estimate_hist = rappor.aggregate_histogram(private_bucket_list)
     print("this is estimate_hist", estimate_hist)
 
 

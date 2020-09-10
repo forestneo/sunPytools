@@ -49,7 +49,7 @@ class HR:
         Cx = np.where(hadamard_line == 1)
         return Cx[0]
 
-    def decode_histogram(self, private_bucket_list):
+    def aggregate_histogram(self, private_bucket_list):
         private_hist = np.histogram(private_bucket_list, bins=range(self.private_bucket_size + 1))[0]
         hist = np.zeros(shape=self.bucket_size)
         for i in range(self.bucket_size):
@@ -79,7 +79,7 @@ def run_example():
     print("==========>>>>> in KRR")
     private_bucket_list = [hr.user_encode(item) for item in bucket_list]
     print("this is private buckets: ", private_bucket_list)
-    estimate_hist = hr.decode_histogram(private_bucket_list)
+    estimate_hist = hr.aggregate_histogram(private_bucket_list)
     print("this is estimate_hist", estimate_hist)
 
 

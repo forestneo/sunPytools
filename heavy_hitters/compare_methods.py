@@ -9,7 +9,7 @@
 
 import numpy as np
 import heavy_hitters.rappor as RAPPOR
-import heavy_hitters.k_random_response as KRR
+import heavy_hitters.k_randomized_response as KRR
 import heavy_hitters.hadamard_response as HR
 import matplotlib.pyplot as plt
 
@@ -18,8 +18,11 @@ def generate_distribution(distribution_name, domain):
     if distribution_name == "uniform":
         return np.full(shape=domain, fill_value=1.0 / domain)
     elif distribution_name == "gauss":
-        prob_list = [0]
-        return prob_list
+        u = domain / 2
+        sigma = domain / 6
+        x = np.arange(1, domain+1)
+        fx = 1 / (np.sqrt(2*np.pi) * sigma) * np.e**(- (x-u)**2 / (2 * sigma**2))
+        return fx / sum(fx)
     elif distribution_name == "exp":
         lmda = 2
         prob_list = np.array([lmda * np.e**(-lmda * x) for x in np.arange(1, domain+1)/10])
@@ -69,7 +72,7 @@ def run_example():
     print("\n==========>>>>> in HR")
     hr = HR.HR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
     hr_private_bucket_list = [hr.user_encode(bucket) for bucket in bucket_list]
-    hr_histogram = hr.decode_histogram(private_bucket_list=hr_private_bucket_list)
+    hr_histogram = hr.aggregate_histogram(private_bucket_list=hr_private_bucket_list)
     hr_error = get_err(true_hist, hr_histogram, config['error_method'])
     # print("HR resul", hr_histogram)
     print("HR error", hr_error)
@@ -77,15 +80,15 @@ def run_example():
     print("\n==========>>>>> in RAPPOR")
     rappor = RAPPOR.RAPPOR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
     rappor_private_bucket_list = [rappor.user_encode(bucket) for bucket in bucket_list]
-    rappor_histogram = rappor.decode_histogram(private_bucket_list=rappor_private_bucket_list)
+    rappor_histogram = rappor.aggregate_histogram(private_bucket_list=rappor_private_bucket_list)
     rappor_error = get_err(true_hist, rappor_histogram, config['error_method'])
     # print("RAPPOR resul", rappor_histogram)
     print("RAPPOR error", rappor_error)
 
     print("\n==========>>>>> in KRR")
     krr = KRR.kRR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
-    krr_private_bucket_list = [krr.encode_item(item) for item in bucket_list]
-    krr_histogram = krr.decode_histogram(krr_private_bucket_list)
+    krr_private_bucket_list = [krr.user_encode(item) for item in bucket_list]
+    krr_histogram = krr.aggregate_histogram(krr_private_bucket_list)
     krr_error = get_err(true_hist, krr_histogram, config['error_method'])
     # print("krr result  ", krr_histogram)
     print("krr error   ", krr_error)
@@ -94,6 +97,6 @@ def run_example():
 
 if __name__ == '__main__':
     # run_example()
-    dist = generate_distribution(distribution_name='exp', domain=100)
+    dist = generate_distribution(distribution_name='exp', domain=20)
     print(dist)
     draw_distribution(dist)

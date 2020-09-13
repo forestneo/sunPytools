@@ -49,7 +49,6 @@ class PiecewiseMechanism:
         L = (C+1)/2 * value - (C-1)/2
         R = L + C - 1
 
-        # 将数据分为两部分，一部分是仅仅在高概率，一部分是随机在所有数据中产生，仅在高概率的概率为 p_h
         p_h = (p - p / (np.e**self.epsilon)) * (C-1)
 
         rnd = np.random.random()

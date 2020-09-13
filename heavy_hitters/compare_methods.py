@@ -39,8 +39,8 @@ def generate_bucket(n, bucket_size, distribution_name):
 
 
 def draw_distribution(distribution):
-    index = np.arange(1, len(distribution)+1)
-    plt.bar(index, distribution)
+    index = np.arange(len(distribution))
+    plt.plot(index, distribution)
     plt.show()
 
 

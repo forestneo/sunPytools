@@ -8,7 +8,6 @@
 
 
 import numpy as np
-import basis.local_differential_privacy_library as ldplib
 import heavy_hitters.compare_methods as example
 
 class kRR:
@@ -18,28 +17,36 @@ class kRR:
         self.bucket_size = bucket_size
         self.epsilon = epsilon
         self.k = bucket_size
+
         self.p_h = np.e ** epsilon / (np.e ** epsilon + self.k - 1)
         self.p_l = 1 / (np.e ** epsilon + self.k - 1)
+        self.__tf_matrix = np.full(shape=(self.k, self.k), fill_value=self.p_l)
+        for i in range(self.k):
+            self.__tf_matrix[i][i] = self.p_h
 
     def user_encode(self, bucket):
-        if bucket >= self.bucket_size:
-            raise Exception("the input domain is wrong, bucket = %d, k = %d" % (bucket, self.bucket_size))
-        return ldplib.k_random_response_new(item=bucket, k=self.k, epsilon=self.epsilon)
+        probability_list = self.__tf_matrix[bucket]
+        return np.random.choice(a=range(self.k), p=probability_list)
 
     def aggregate_histogram(self, private_bucket_list):
-        private_hist = np.histogram(private_bucket_list, range(self.k+1))[0]
+        private_hist = np.zeros(shape=self.k)
+        for private_bucket in private_bucket_list:
+            private_hist[private_bucket] += 1
+        print("this is private_hist: ", private_hist)
         n = len(private_bucket_list)
         estimate_counts = (private_hist - n * self.p_l) / (self.p_h - self.p_l)
         return estimate_counts
 
 
 def run_example():
-    bucket_size = 5
+    np.random.seed(10)
+    n = 10 ** 6
+    bucket_size = 20
     epsilon = 1
 
     print("==========>>>>> in KRR")
     krr = kRR(bucket_size=bucket_size, epsilon=epsilon)
-    bucket_list, true_hist = example.generate_bucket(n=10000, bucket_size=bucket_size, distribution_name='uniform')
+    bucket_list, true_hist = example.generate_bucket(n=n, bucket_size=bucket_size, distribution_name='exp')
     print("this is buckets: ", bucket_list)
     print("this is true hist: ", true_hist)
 

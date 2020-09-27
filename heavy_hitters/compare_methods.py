@@ -86,7 +86,7 @@ def run_example():
     print("RAPPOR error", rappor_error)
 
     print("\n==========>>>>> in KRR")
-    krr = KRR.kRR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
+    krr = KRR.GeneralizedRandomizedResponse(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
     krr_private_bucket_list = [krr.user_encode(item) for item in bucket_list]
     krr_histogram = krr.aggregate_histogram(krr_private_bucket_list)
     krr_error = get_err(true_hist, krr_histogram, config['error_method'])

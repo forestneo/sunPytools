@@ -32,7 +32,6 @@ import matplotlib.pyplot as plt
 #
 #
 # def my_run_tst():
-#     # np.random.seed(10)
 #     value_table = np.random.normal(loc=0.2, scale=0.2, size=[100000, 10])
 #     value_table = np.clip(value_table, -1, 1)
 #     m_base = np.mean(value_table, axis=0)

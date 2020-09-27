@@ -192,7 +192,7 @@ def kv_de_bisample(p_kv_list: np.ndarray, epsilon):
 
 def my_run_tst():
     # initial random seed, optional
-    np.random.seed(10)
+    # np.random.seed(10)
 
     # generate 100000 kv pairs with f=0.7 and m=0.3
     kv_list = [[np.random.binomial(1, 0.7), np.clip(a=np.random.normal(loc=0.3, scale=0.3), a_min=-1, a_max=1)] for _ in

@@ -91,7 +91,7 @@ def run_example():
     bucket_size = 1000
     m = 500000
 
-    np.random.seed(10)
+    # np.random.seed(10)
 
     bucket_list, true_hist = example.generate_bucket(n=n, bucket_size=bucket_size, distribution_name='exp')
 

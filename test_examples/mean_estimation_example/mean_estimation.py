@@ -5,8 +5,8 @@
 # @Software: PyCharm
 
 
-from mean_solutions import duchi
-from mean_solutions import piecewise
+from mean_solutions import DuchiMechanism
+from mean_solutions import PiecewiseMechanism
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -44,10 +44,10 @@ def my_run_tst():
         epsilon = 0.02 * i
         epsilon_list.append(epsilon)
 
-        m_est_duchi = get_mean_from_table(value_table=value_table, epsilon=epsilon, en_mtd=duchi.encode_duchi,
-                                          de_mtd=duchi.decode_duchi)
-        m_est_pm = get_mean_from_table(value_table=value_table, epsilon=epsilon, en_mtd=piecewise.encode_piecewise,
-                                       de_mtd=piecewise.decode_piecewise)
+        m_est_duchi = get_mean_from_table(value_table=value_table, epsilon=epsilon, en_mtd=DuchiMechanism.encode_duchi,
+                                          de_mtd=DuchiMechanism.decode_duchi)
+        m_est_pm = get_mean_from_table(value_table=value_table, epsilon=epsilon, en_mtd=PiecewiseMechanism.encode_piecewise,
+                                       de_mtd=PiecewiseMechanism.decode_piecewise)
         print(epsilon, m_est_duchi, m_est_pm)
         error_duchi.append(np.average(np.fabs(m_est_duchi-m_base)))
         error_piecewise.append(np.average(np.fabs(m_est_pm-m_base)))
@@ -77,13 +77,13 @@ def my_run_tst_2():
         epsilon_list.append(epsilon)
 
         # duchi's solution
-        duchi_data = [duchi.encode_duchi(value, epsilon) for value in data]
+        duchi_data = [DuchiMechanism.encode_duchi(value, epsilon) for value in data]
         mean_duchi = np.average(duchi_data)
         err_duchi = np.fabs(mean_duchi-mean_ori)
         error_duchi.append(err_duchi)
 
         # piecewise solution
-        pm_data = [piecewise.encode_piecewise_mine(value, epsilon) for value in data]
+        pm_data = [PiecewiseMechanism.encode_piecewise_mine(value, epsilon) for value in data]
         mean_pm = np.average(pm_data)
         err_pm = np.fabs(mean_pm-mean_ori)
         print(epsilon, err_duchi, err_pm)

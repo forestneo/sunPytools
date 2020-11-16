@@ -1,2 +1,6 @@
-continuous_histogram/
 .idea/
+
+continuous_histogram/
+condition_kv
+mean_iteration
+marginal_missing_data

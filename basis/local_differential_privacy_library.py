@@ -73,6 +73,13 @@ def random_response(bit_array: np.ndarray, p, q=None):
     return np.where(bit_array == 1, np.random.binomial(1, p, len(bit_array)), np.random.binomial(1, q, len(bit_array)))
 
 
+def random_response_decode(bit_array_list: np.ndarray, p: float, q=None):
+    q = 1-p if q is None else q
+    n = bit_array_list.shape[0]
+    y = np.sum(bit_array_list, axis=0)
+    return (y - n * q) / (p-q)
+
+
 def unary_encoding(bit_array: np.ndarray, epsilon):
     """
     the unary encoding, the default UE is SUE

@@ -102,15 +102,4 @@ if __name__ == '__main__':
         de_esti = method.estimate_distance(p_a, p_b)
         print(a, b, de_true, de_esti)
 
-
-
-
-
-
-
-
-
-
-
-
     pass

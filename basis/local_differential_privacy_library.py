@@ -91,14 +91,23 @@ def unary_encoding(bit_array: np.ndarray, epsilon):
 
 
 def symmetric_unary_encoding(bit_array: np.ndarray, epsilon):
-    p = eps2p(epsilon / 2) / (eps2p(epsilon / 2) + 1)
-    q = 1 / (eps2p(epsilon / 2) + 1)
+    """
+    the SUE, the p and q is revised.
+    update: 2021.04.20
+    """
+    t = np.e ** (epsilon / 2)
+    p = t / (t + 1)
+    q = 1 / (t + 1)
     return random_response(bit_array, p, q)
 
 
 def optimized_unary_encoding(bit_array: np.ndarray, epsilon):
+    """
+    the OUE, the p and q is revised.
+    update: 2021.04.20
+    """
     p = 1 / 2
-    q = 1 / (eps2p(epsilon) + 1)
+    q = 1 / (np.e ** epsilon + 1)
     return random_response(bit_array, p, q)
 
 

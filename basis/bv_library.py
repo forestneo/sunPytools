@@ -51,7 +51,7 @@ class RandomBitVector:
 
     def estimate_distance(self, private_data1, private_data2):
         d_h = np.sum(np.fabs(private_data1 - private_data2))
-        d_e = (d_h / s - ((1-self.p**2)/2)) * self.u / self.p**2
+        d_e = (d_h / self.s - ((1-self.p**2)/2)) * self.u / self.p**2
         return d_e
 
 
@@ -75,10 +75,10 @@ class PMRandomizedBitVector:
 
 
 if __name__ == '__main__':
-    s = 10000
+    length = 10000
     np.random.seed(0)
     data_range = [-10, 20]
-    random_values = np.random.uniform(low=data_range[0], high=data_range[1], size=s)
+    random_values = np.random.uniform(low=data_range[0], high=data_range[1], size=length)
     print(random_values)
     print(min(random_values), max(random_values))
     t = 4
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     BV = BitVector(random_values=random_values, t=t, data_range=data_range)
     RBV = RandomBitVector(random_values=random_values, data_range=data_range, p=0.9)
     PMRBV = PMRandomizedBitVector(random_values=random_values, data_range=data_range, triangle=1, epsilon=10)
-    method = PMRBV
+    method = RBV
 
     data_pair = [
         [1, 3],

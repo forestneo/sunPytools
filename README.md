@@ -1,6 +1,6 @@
 [toc]
 
-# Introdcution
+# Introduction
 Useful tools for local differential privacy, which mainly consists of several parts:
 
 - basis

@@ -86,7 +86,7 @@ if __name__ == '__main__':
     BV = BitVector(random_values=random_values, t=t, data_range=data_range)
     RBV = RandomBitVector(random_values=random_values, data_range=data_range, p=0.9)
     PMRBV = PMRandomizedBitVector(random_values=random_values, data_range=data_range, triangle=1, epsilon=10)
-    method = RBV
+    method = BV
 
     data_pair = [
         [1, 3],

@@ -7,7 +7,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-from basis.sunLDP import local_differential_privacy_library as ldplib
+from basis.sunLDP import ldplib as ldplib
 
 
 def generate_data(buckets=100, user_number=10000):

@@ -8,7 +8,7 @@
 # @Function: 
 
 import numpy as np
-import heavy_hitters.compare_methods as example
+from applications import heavy_hitters as example
 
 
 class RAPPOR:

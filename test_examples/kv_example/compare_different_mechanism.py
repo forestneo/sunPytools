@@ -8,7 +8,7 @@
 # @Function: 
 
 import numpy as np
-import basis.sunLDP.keyvalue_library as kvlib
+import basis.sunLDP.kvlib as kvlib
 
 
 def generate_kvt(n=10**6, d=100):

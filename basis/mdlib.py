@@ -3,11 +3,11 @@
 # @Author  : ForestNeo
 # @Site    : forestneo.com
 # @Email   : dr.forestneo@gmail.com
-# @File    : missing_data_library.py
+# @File    : mdlib.py
 # @Software: PyCharm
 # @Function: 
 
-import basis.sunLDP.local_differential_privacy_library as ldplib
+import basis.sunLDP.ldplib as ldplib
 import numpy as np
 
 

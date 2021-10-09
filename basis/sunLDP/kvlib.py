@@ -5,7 +5,7 @@
 # @Software: PyCharm
 
 import numpy as np
-import basis.sunLDP.local_differential_privacy_library as ldplib
+import basis.sunLDP.ldplib as ldplib
 
 
 def kvlist_get_baseline(kv_list: np.ndarray, discretization=False):
@@ -127,7 +127,7 @@ def kv_de_state_encoding(p_kv_list: np.ndarray, epsilon):
     This is used in the server side. The server collects all the data and then use this function to calculate f and m.
     :param p_kv_list: the encoded kv list
     :param epsilon: the privacy budget
-    :return: the estimated frequency and mean_solutions.
+    :return: the estimated frequency and mean_estimation.
     """
     if not isinstance(p_kv_list, np.ndarray):
         raise Exception("type error of p_kv_list: ", type(p_kv_list))

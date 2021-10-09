@@ -5,7 +5,7 @@
 # @Software: PyCharm
 
 import numpy as np
-import basis.local_differential_privacy_library as ldplib
+import basis.sunLDP.local_differential_privacy_library as ldplib
 
 
 def kvlist_get_baseline(kv_list: np.ndarray, discretization=False):

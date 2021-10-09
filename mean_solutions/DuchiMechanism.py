@@ -6,7 +6,7 @@
 # @Software: PyCharm
 
 
-from basis import local_differential_privacy_library as ldplib
+from basis.sunLDP import local_differential_privacy_library as ldplib
 import numpy as np
 
 

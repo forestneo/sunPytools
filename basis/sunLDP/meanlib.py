@@ -12,7 +12,6 @@ import numpy as np
 import basis.sunLDP.ldplib as ldplib
 
 
-
 class Duchi:
     def __init__(self, epsilon):
         self.epsilon = epsilon
@@ -69,5 +68,8 @@ class PiecewiseMechanism:
             rnd_v = np.random.uniform(L, R)
         else:
             rnd_v = np.random.uniform(-C, C)
-
         return rnd_v
+
+
+if __name__ == '__main__':
+    print("hello")

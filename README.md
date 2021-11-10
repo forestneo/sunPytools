@@ -1,4 +1,3 @@
-[toc]
 
 - 我的个人网站：[https://forestneo.com/](https://forestneo.com/)
 - 欢迎关注我的知乎：[DPer](https://www.zhihu.com/people/sun-lin-83)

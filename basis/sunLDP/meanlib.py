@@ -72,4 +72,10 @@ class PiecewiseMechanism:
 
 
 if __name__ == '__main__':
-    print("hello")
+    data = np.clip(np.random.normal(loc=0.2, scale=0.3, size=100000), a_min=-1, a_max=1)
+    m_base = np.average(data)
+
+    duchi = Duchi(epsilon=1)
+    encoded_data = [duchi.encode(v) for v in data]
+    estimated_m = np.average(encoded_data)
+    print(m_base, estimated_m)

@@ -6,6 +6,7 @@
 
 """
 @ 2021.10.09 整合了之前的 Duchi 方法和 PM 方法
+@ 2021.11.22 添加Laplace机制
 """
 
 import numpy as np
@@ -14,26 +15,26 @@ import basis.sunLDP.ldplib as ldplib
 
 class Duchi:
     def __init__(self, epsilon):
-        self.epsilon = epsilon
-        self.C = (np.e**epsilon+1)/(np.e**epsilon-1)
+        self.__epsilon = epsilon
+        self.__C = (np.e ** epsilon + 1) / (np.e ** epsilon - 1)
 
     def encode(self, v):
         if not -1 <= v <= 1:
             raise Exception("Error, The input domain is [-1, 1], while the input is ", v)
         value = ldplib.discretization(value=v, lower=-1, upper=1)
-        value = ldplib.perturbation(value=value, perturbed_value=-value, epsilon=self.epsilon)
-        return self.C * value
+        value = ldplib.perturbation(value=value, perturbed_value=-value, epsilon=self.__epsilon)
+        return self.__C * value
 
 
 class PiecewiseMechanism:
     def __init__(self, epsilon):
-        self.epsilon = epsilon
+        self.__epsilon = epsilon
 
     def encode_author(self, v):
         """
         Piecewise Mechanism, from paper: Collecting and Analyzing Multidimensional Data with Local Differential Privacy
         """
-        z = np.e ** (self.epsilon / 2)
+        z = np.e ** (self.__epsilon / 2)
         P1 = (v + 1) / (2 + 2 * z)
         P2 = z / (z + 1)
         P3 = (1 - v) / (2 + 2 * z)
@@ -56,12 +57,12 @@ class PiecewiseMechanism:
         """
         Piecewise Mechanism, from paper: Collecting and Analyzing Multidimensional Data with Local Differential Privacy
         """
-        C = (np.e**(self.epsilon/2)+1) / (np.e**(self.epsilon/2)-1)
-        p = (np.e**self.epsilon - np.e**(self.epsilon/2)) / (2*np.e**(self.epsilon/2)+2)
+        C = (np.e ** (self.__epsilon / 2) + 1) / (np.e ** (self.__epsilon / 2) - 1)
+        p = (np.e ** self.__epsilon - np.e ** (self.__epsilon / 2)) / (2 * np.e ** (self.__epsilon / 2) + 2)
         L = (C+1)/2 * value - (C-1)/2
         R = L + C - 1
 
-        p_h = (p - p / (np.e**self.epsilon)) * (C-1)
+        p_h = (p - p / (np.e ** self.__epsilon)) * (C - 1)
 
         rnd = np.random.random()
         if rnd <= p_h:
@@ -71,11 +72,12 @@ class PiecewiseMechanism:
         return rnd_v
 
 
-if __name__ == '__main__':
-    data = np.clip(np.random.normal(loc=0.2, scale=0.3, size=100000), a_min=-1, a_max=1)
-    m_base = np.average(data)
+class Laplace:
+    def __init__(self, epsilon):
+        self.__epsilon = epsilon
+        self.__laplace_scale = 2 / self.__epsilon
 
-    duchi = Duchi(epsilon=1)
-    encoded_data = [duchi.encode(v) for v in data]
-    estimated_m = np.average(encoded_data)
-    print(m_base, estimated_m)
+    def encode(self, v):
+        return v + np.random.laplace(loc=0, scale=self.__laplace_scale)
+
+

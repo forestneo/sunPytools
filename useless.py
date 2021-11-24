@@ -11,11 +11,6 @@ import numpy as np
 
 
 if __name__ == '__main__':
-    a = np.zeros(shape=(12, 3))
-    for i in range(12):
-        a[i] = i
-    # print(a)
-
-    print(a.shape)
+    pass
 
 

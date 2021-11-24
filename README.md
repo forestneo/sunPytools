@@ -1,30 +1,27 @@
 
+
+# Introduction
+
+
 - 我的个人网站：[https://forestneo.com/](https://forestneo.com/)
 - 欢迎关注我的知乎：[DPer](https://www.zhihu.com/people/sun-lin-83)
 - 欢迎关注微信公众号：[《差分隐私》](https://forest-pic.oss-cn-beijing.aliyuncs.com/20200308122411.png)
 - QQ学习交流群：779053117（微信交流群联系群主添加）
 
-![微信公众号](https://forest-pic.oss-cn-beijing.aliyuncs.com/20200308122411.png)
+<img src="https://forest-pic.oss-cn-beijing.aliyuncs.com/20200308122411.png" alt="微信公众号" style="zoom: 33%;" />
 
 
-# Introduction
-Useful tools for local differential privacy, which mainly consists of several parts:
 
-- basis
-    - ldplib: local differential privacy library
-    - kvlib: key-value library
-    - mdlib: missing data library
-- heavy_hitters
-    - hadamard_response
-    - k_random_response
-    - k_subset
-    - rappor
-- mean_solutions
-    - duchi
-    - piecewise
+This project mainly contains two parts:
+
+- `basis.sunLDP`: original known as `sunDP`. This package can be used for developing LDP mechanisms. The detailed information is listed below.
+- `basis.sunCrypt`: this package is not fully developed yet, but can be ued for understanding cryptographing algorithms, such as RSA and Paillier.
+
+# Main Packages
+
+## sunLDP
 
 
-# ldplib
 
 The ldplib provides basic randomized functions.
 
@@ -48,7 +45,6 @@ The kvlib main contains the following perturbation and analysis algorithms:
 - `PrivBV`: [PrivKV: Key-Value Data Collection with Local Differential Privacy](https://ieeexplore.ieee.org/abstract/document/8835348/)
 - `BiSample`: [BiSample: Bidirectional Sampling for Handling Missing Data with Local Differential Privacy.](https://www.researchgate.net/publication/339251866_BiSample_Bidirectional_Sampling_for_Handling_Missing_Data_with_Local_Differential_Privacy/stats)
 - `SE`: from paper [Conditional Analysis for Key-Value Data with Local Differential Privacy](https://arxiv.org/abs/1907.05014)
-- 
 
 # heavy_hitters
 
@@ -61,3 +57,8 @@ The kvlib main contains the following perturbation and analysis algorithms:
 
 - `duchi`: also known as the 1Bit Mechanism (noted that the input domain of 1Bit is [1,m], while the input domain of duchi is [-1,1]).
 - `PM`: [Collecting and Analyzing Multidimensional Data with Local Differential Privacy](https://arxiv.org/abs/1907.00782)
+
+## sunCrypt
+
+
+

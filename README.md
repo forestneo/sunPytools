@@ -11,13 +11,11 @@
 <img src="https://forest-pic.oss-cn-beijing.aliyuncs.com/20200308122411.png" alt="微信公众号" style="zoom: 33%;" />
 
 
-
-This project mainly contains two parts:
+本开源代码可用于科学研究
+本项目主要包含两个部分：
 
 - `basis.sunLDP`: original known as `sunDP`. This package can be used for developing LDP mechanisms. The detailed information is listed below.
 - `basis.sunCrypt`: this package is not fully developed yet, but can be ued for understanding cryptographing algorithms, such as RSA and Paillier.
-
-# Main Packages
 
 ## sunLDP
 
@@ -32,7 +30,7 @@ The ldplib provides basic randomized functions.
 - SUE: symmetric unary encoding from paper [Locally Differentially Private Protocols for Frequency Estimation](https://dl.acm.org/doi/10.5555/3241189.3241247)
 - OUE: optimized unary encodingfrom paper [Locally Differentially Private Protocols for Frequency Estimation](https://dl.acm.org/doi/10.5555/3241189.3241247)
 
-# kvlib
+### kvlib
 
 Some basic encoding terms:
 
@@ -46,19 +44,19 @@ The kvlib main contains the following perturbation and analysis algorithms:
 - `BiSample`: [BiSample: Bidirectional Sampling for Handling Missing Data with Local Differential Privacy.](https://www.researchgate.net/publication/339251866_BiSample_Bidirectional_Sampling_for_Handling_Missing_Data_with_Local_Differential_Privacy/stats)
 - `SE`: from paper [Conditional Analysis for Key-Value Data with Local Differential Privacy](https://arxiv.org/abs/1907.05014)
 
-# heavy_hitters
+### heavy_hitters
 
 - `Hadamard Repsonse`: [Hadamard Response: Estimating Distributions Privately, Efficiently, and with Little Communication](http://arxiv.org/abs/1802.04705)
 - `k-RR`: the k-randomized response
 - `k-subset`:
 - `RAPPOR`: [RAPPOR: Randomized Aggregatable Privacy-Preserving Ordinal Response](http://dl.acm.org/citation.cfm?doid=2660267.2660348)
 
-# mean_solutions
+### mean_solutions
 
 - `duchi`: also known as the 1Bit Mechanism (noted that the input domain of 1Bit is [1,m], while the input domain of duchi is [-1,1]).
 - `PM`: [Collecting and Analyzing Multidimensional Data with Local Differential Privacy](https://arxiv.org/abs/1907.00782)
 
-## sunCrypt
+# sunCrypt
 
 
 

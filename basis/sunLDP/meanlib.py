@@ -104,10 +104,6 @@ class ValueEncoder:
             raise Exception("ERR, input range error, v = %.2f" % v)
         return self.method.encode(v)
 
-    def encode_var(self, v):
-        # todo:
-        return None
-
 
 if __name__ == '__main__':
     data = np.clip(np.random.normal(loc=0.2, scale=0.3, size=10**3), a_min=-1, a_max=1)

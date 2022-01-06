@@ -12,7 +12,6 @@
 
 本开源代码可用于科学研究，本项目主要包含两个部分：
 
-<<<<<<< HEAD
 - `basis.sunLDP`: 以前叫做`sunDP`，里面包含和LDP相关的内容；
 - `basis.sunCrypt`: 包含一些密码学的算法基本流程，可用于对一些密码算法流程的了解，实现效率低；
 =======
@@ -21,10 +20,8 @@
 
 - `basis.sunLDP`: original known as `sunDP`. This package can be used for developing LDP mechanisms. The detailed information is listed below.
 - `basis.sunCrypt`: this package is not fully developed yet, but can be ued for understanding cryptographing algorithms, such as RSA and Paillier.
->>>>>>> 089c45fcc586e10d97b98eac14642c243a298c3f
 
 ## sunLDP
-
 
 
 The ldplib provides basic randomized functions.

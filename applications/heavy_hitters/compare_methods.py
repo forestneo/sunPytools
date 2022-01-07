@@ -8,7 +8,9 @@
 # @Function:
 
 import numpy as np
-from applications import heavy_hitters as KRR, heavy_hitters as HR
+import applications.heavy_hitters.hadamard_response as HR
+import applications.heavy_hitters.rappor as RAPP
+import applications.heavy_hitters.k_randomized_response as KRR
 import matplotlib.pyplot as plt
 
 
@@ -76,7 +78,7 @@ def run_example():
     print("HR error", hr_error)
 
     print("\n==========>>>>> in RAPPOR")
-    rappor = rappor.RAPPOR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
+    rappor = RAPP.RAPPOR(bucket_size=config['bucket_size'], epsilon=config['epsilon'])
     rappor_private_bucket_list = [rappor.user_encode(bucket) for bucket in bucket_list]
     rappor_histogram = rappor.aggregate_histogram(private_bucket_list=rappor_private_bucket_list)
     rappor_error = get_err(true_hist, rappor_histogram, config['error_method'])
@@ -94,7 +96,7 @@ def run_example():
 
 
 if __name__ == '__main__':
-    # run_example()
-    dist = generate_distribution(distribution_name='exp', domain=20)
-    print(dist)
-    draw_distribution(dist)
+    run_example()
+    # dist = generate_distribution(distribution_name='exp', domain=20)
+    # print(dist)
+    # draw_distribution(dist)

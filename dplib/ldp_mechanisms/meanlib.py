@@ -11,7 +11,7 @@
 """
 
 import numpy as np
-import basis.sunLDP.ldplib as ldplib
+import dplib.ldp_mechanisms.ldplib as ldplib
 
 
 class Duchi:

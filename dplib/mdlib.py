@@ -7,7 +7,7 @@
 # @Software: PyCharm
 # @Function: 
 
-import basis.sunLDP.ldplib as ldplib
+import dplib.ldp_mechanisms.ldplib as ldplib
 import numpy as np
 
 

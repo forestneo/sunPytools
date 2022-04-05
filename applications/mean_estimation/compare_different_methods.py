@@ -13,7 +13,7 @@ This is a case for the mean estimation tasks
 
 import numpy as np
 import matplotlib.pyplot as plt
-import basis.sunLDP.meanlib as meanlib
+import dplib.ldp_mechanisms.meanlib as meanlib
 
 
 if __name__ == '__main__':

@@ -1,8 +1,8 @@
 .idea/
 applications/
 test_examples/
-basis/sunLDP/meanlib_res.csv
-basis/sunLDP/meanlib_tst.py
-basis/sunLDP/varlib.py
-basis/sunLDP/varlib_res.csv
+dplib/ldp_mechanisms/meanlib_res.csv
+dplib/ldp_mechanisms/meanlib_tst.py
+dplib/ldp_mechanisms/varlib.py
+dplib/ldp_mechanisms/varlib_res.csv
 /useless.py

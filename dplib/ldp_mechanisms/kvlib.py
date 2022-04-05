@@ -5,7 +5,7 @@
 # @Software: PyCharm
 
 import numpy as np
-import basis.sunLDP.ldplib as ldplib
+import dplib.ldp_mechanisms.ldplib as ldplib
 
 
 def kvlist_get_baseline(kv_list: np.ndarray, discretization=False):
